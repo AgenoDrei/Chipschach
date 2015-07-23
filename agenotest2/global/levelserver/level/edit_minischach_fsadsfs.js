@@ -1,1 +1,0 @@
-Level = {"type":"lvl","board":{"0":{"type":"King","color":"Yellow","x":"4","y":"5"},"1":{"type":"Queen","color":"Blue","x":"5","y":"2"},"2":{"type":"Chip","color":"Green","x":"4","y":"2"}},"name":"fsadsfs","description":"fdadffdsa","win":"3","filename":"edit_minischach_fsadsfs"}
