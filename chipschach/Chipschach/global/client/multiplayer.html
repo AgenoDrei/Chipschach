@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+	<script type="text/javascript" src="src/game.js"></script>
+	<script type="text/javascript" src="../../lib/jquery-1.11.1.js"></script>
+	<script type="text/javascript" src="../../lib/crafty.js"></script>
+	<script type="text/javascript" src="../../lib/toastr.js"></script>
+	<script type="text/javascript" src="src/components.js"></script>
+	<script type="text/javascript" src="src/getlevel.js"></script>
+	<script type="text/javascript" src="src/scenes.js"></script>
+	<script type="text/javascript" src="src/network.js"></script>
+	<link rel="stylesheet" href="../../lib/toastr.css"/>
+	<link rel="stylesheet" href="../../lib/bootstrap.min.css" />
+	<link rel="stylesheet" href="css/style.css" />
+	<script type="text/javascript" src="src/main.js"></script>
+
+	<title>Chipschach - Netzwerk</title>
+</head>
+
+<body>
+	<div id="overlay"></div>
+	<div id="nav">
+		<div id="btn_menu"></div>
+		<div id="profile-container1">
+			<div class="navicon" id="profilePic">
+				<img src="../../img/profilPicErsatz.bmp">
+			</div>
+			<div id="counter-container">
+				<div class="navicon" id="counter">
+					<img src="../../img/chips'n'figures/ChipGreen.png">
+					<div id="chipCounter_value1">-</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="navicons_inDaMiddle">
+			<!--<img src="../../img/help/help.png" title="Hilfe anzeigen" height="75px" id="showHelp">-->
+			<img src="../../img/close.png" title="zum Hauptmenü" height="75px" id="close" style="display: block; margin: 0 auto;">
+			<img src="../../img/yield.png" title="Aufgeben" class="navButtons" id="yield">
+		</div>
+
+		<div id="attributes">
+			<form class="form-inline" role="form">
+				<label for="IP-Adresse Server">Server Adresse</label> 
+				<input type="text" class="form-control" id="address" value="schach-fuer-kids.de" disabled>
+
+				<label style="margin-top: 15px;" for="modus">Levelauswahl</label> 
+				<select class="form-control" id="level">
+					<option value="minischach_debug.js" >Level Debug</option>
+					<option value="mp_l_tower_01.js">Level Turm 1.1</option>
+					<option value="mp_l_tower_02.js">Level Turm 1.2</option>
+					<option value="mp_l_queen_01.js">Level Dame 1.1</option>
+					<option value="mp_l_queen_09.js">Level Dame 2.4</option>
+					<option value="mp_l_queen_10.js">Level Dame 2.5</option>
+					<option value="mp_l_bishop_01.js">Level Läufer 1.1</option>
+					<option value="mp_l_bishop_07.js">Level Läufer 1.7</option>
+				</select>
+			</form>
+		</div>
+		<div id="profile-container2">
+			<div id="counter-container">
+				<div class="navicon" id="counter">
+					<img src="../../img/chips'n'figures/ChipGreen.png"
+					style="width: 50px; height: 50px;">
+					<div id="chipCounter_value2">-</div>
+				</div>
+			</div>
+			<div class="navicon" id="profilePic">
+				<img src="../../img/profilPicErsatz.bmp">
+			</div>
+		</div>
+	</div>
+
+	<div id="board-container">
+		<div id="turnBlue"></div>
+		<div id="turnYellow"></div>
+		<div id='menu'>
+			<img src="../../img/logo_small.png" height="150px">
+			<h3 style="text-align: center">Globaler Multiplayer</h3>
+			<div class="spinner">
+				<div class="rect1"></div>
+				<div class="rect2"></div>
+				<div class="rect3"></div>
+				<div class="rect4"></div>
+				<div class="rect5"></div>
+			</div>
+			<p>Spiele gegen einen zufälligen Gegner. Er muss nur Internet,
+				Chipschach und einen Computer besitzen!</p>
+				<div id="start">
+					<button type="button" class="btn btn-success btn-lg"
+					id="btn_mp_start">Start!</button>
+					<button type="button" class="btn btn-default btn-lg"
+					id="btn_difficulty"
+					title="zum ändern des Spielmodus, hier klicken">Schlagen
+					verboten</button>
+					<br>
+				</div>
+			</div>
+			<div id="cr-stage"></div>
+		</div>
+		<!--<div id="help">
+			<div class="name">
+			<h3>Level-Name:</h3>
+				<p></p>
+			</div>
+			<div class="description">
+				<h3>Level-Beschreibung:</h3>
+				<p>Dies ist ein Netzwerk Multiplayer Level.<br>Besiege deinen
+					Gegner!</p>
+			</div>
+		</div>-->
+		<div id="errorInfo">
+			<h1>Fenster ist zu klein</h1>
+		</div>
+	</body>
+	</html>

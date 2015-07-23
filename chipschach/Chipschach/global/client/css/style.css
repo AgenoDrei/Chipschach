@@ -1,0 +1,326 @@
+body {
+	height: 100%;
+	background-color: grey;
+	background: url(../../../img/muster.png);
+	font-family: "Arial Rounded MT Bold", "HelveticaNeue-Light",
+		"Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial,
+		"Lucida Grande", sans-serif;
+	min-width: 1460px;
+}
+	#body-container {
+		z-index: 10;
+	}
+	#errorInfo {
+		position: absolute;
+		left: 0; right: 0;
+		margin: 150px auto;
+		width: 500px;
+		height: 500px;
+		text-align: center;
+		
+		display: none;
+	}
+
+a:active, a:focus{
+	ie-dummy: expression(this.hideFocus=true);
+	outline: none;
+}
+
+#nav {
+	position: fixed;
+	display: block;
+	padding: 10px;
+	left: -250px;
+	background: rgba(255, 255, 255, .7);
+	height: 100%;
+	width: 250px;
+	z-index: 200;
+}
+
+#btn_menu {
+	position: absolute;
+	right: -65px;
+	top: 10px;
+	width: 50px;
+	height: 50px;
+	opacity: 0.7;
+	background: url(../../../img/menu.png);
+	background-size: 80% 80%;
+	background-repeat: no-repeat;
+	background-position: center;
+	background-color: white;
+	border-radius: 50%;
+}
+
+	#nav .navicon {
+		position: relative;
+		margin: 10px auto;
+		display: block;
+	}
+	#nav #profilePic {
+		width: 150px;
+		height: 160px;
+		padding: 20px;
+		
+		background-color: white;
+		text-align: center;
+	}
+		#nav #profilePic img {
+			width: 110px; 
+			height: 120px;
+		}
+	#nav #counter {
+		width: 125px;
+	}
+		#nav #counter img {
+			width: 50px;
+			height: 50px;
+		}
+	#profile-container1 {
+	position: absolute;
+	top: 20px;
+	
+	left: 0px;
+	right: 0px;
+	margin: 0 auto;
+	}
+		#nav #counter #chipCounter_value1 {
+			width: 75px;
+			height: 50px;
+			padding: 5px;
+			float: right;
+			background-color: white;
+			border-radius: 15px;
+			
+			font-size: 40px;
+			line-height: 1;
+			text-align: center;
+		}
+
+	.navicons_inDaMiddle {
+		width: 160px;
+		height: 110px;
+		
+		position: absolute; /* Zentrierung */
+		top: 0px;
+		bottom: 0px;
+		left: 0px;
+		right: 0px;
+		margin: auto auto;
+	}
+	
+	.navicons_inDaMiddle .navButtons{
+			margin: 10px auto;
+			display: block;
+			height: 35px;
+	}
+	
+
+	#profile-container2 {
+		position: absolute;
+		bottom: 20px;
+		
+		left: 0px;
+		right: 0px;
+		margin: 0 auto;
+		
+		display: none;
+	}
+		#nav #counter #chipCounter_value2 {
+			width: 75px;
+			height: 50px;
+			padding: 5px;
+			float: right;
+			background-color: white;
+			border-radius: 15px;
+			
+			font-size: 40px;
+			line-height: 1;
+			text-align: center;
+		}		
+	#nav #attributes {
+		position: absolute;
+		top: 62.5%;
+		
+		left: 15px;
+		right: 15px;
+		margin: 0 auto;
+		
+		background-color: rgb(200, 200, 200);
+		border-radius: 15px;
+		opacity: 0.8;
+		padding: 10px;
+		
+		/*display: none;*/
+	}
+	#nav #close {			
+	    transform: scaleX(-1);
+	    filter: FlipH;
+	}
+
+
+#board-container {
+	position: absolute;
+	margin: auto;
+	left: 0; right: 0;
+	top: 0; bottom: 0;
+	display: block;
+	width: 640px;
+	height: 640px;
+	background: url(../../../img/board.png);
+	box-shadow: 5px 5px 25px #888;
+	z-index: 10;
+}
+
+/****TODO: Overlay *******/
+	#turnBlue {
+		position: absolute;
+		left: 0; top: 0;
+		width: 640px;
+		height: 640px;
+		display: none;
+		box-shadow: 5px 5px 25px darkblue;
+		z-index: 2;
+	}
+	
+	#turnYellow {
+		position: absolute;
+		left: 0; top: 0;
+		width: 640px;
+		height: 640px;
+		display: none;
+		box-shadow: 5px 5px 25px orange;
+		z-index: 2;
+	}
+	
+	#overlay {
+		position: fixed;
+		top: 0;
+		left: 0;
+		height: 100%;
+		width: 100%;
+		background: rgba(0,0,0, 0.8);
+		z-index: 100;
+		display: none;
+	}
+	
+	#menu {
+		position: absolute;
+		margin: 20% auto;
+		right: 0;
+		left: 0;
+		background-color: rgb(255, 255, 255);
+		opacity: 0.7;
+		width: 295px;
+		padding: 10px;
+		z-index: 3;
+	}
+		#menu img {
+			display: block;
+			margin: 0 auto;
+		}
+		#menu #btn_sp_start {	/* Singleplayer */
+			display: block;
+			margin: 0 auto;
+			margin-bottom: 10px;
+		}
+		#menu #btn_mp_start {	/* Multiplayer_lokal */
+			float: left;
+			margin-left: 10px;
+			width: 80px;
+			margin-bottom: 10px;
+		}
+		#menu #btn_difficulty {
+			float: right;
+			width: 170px;
+			margin-right: 10px;
+		}
+		#menu #btn_nextLevel {			
+			display: none;
+		}
+			
+		
+	#cr-stage {
+		position: absolute;
+		top: 40px;
+		left: 40px;
+		height: 560px;
+		width: 560px;
+		z-index: 2;
+	}
+
+
+#help {
+	position: absolute;
+	right: 1%;
+	margin-top: 2.5%;
+	background: rgba(255, 255, 255, .7);
+	width: 19%; 
+	color: #008000;
+	text-align: center;
+	padding: 10px;
+		font-weight: bold;
+}
+	#help h3 {
+		text-decoration: underline;
+	}
+	
+
+/*-------------- LOADING SPINNER ------------------*/
+
+.spinner {
+  margin: 35px auto;
+  width: 50px;
+  height: 30px;
+  text-align: center;
+  font-size: 10px;
+  display: none;
+}
+
+.spinner > div {
+  background-color: #333;
+  height: 100%;
+  width: 6px;
+  display: inline-block;
+  
+  -webkit-animation: stretchdelay 1.2s infinite ease-in-out;
+  animation: stretchdelay 1.2s infinite ease-in-out;
+}
+
+.spinner .rect2 {
+  -webkit-animation-delay: -1.1s;
+  animation-delay: -1.1s;
+}
+
+.spinner .rect3 {
+  -webkit-animation-delay: -1.0s;
+  animation-delay: -1.0s;
+}
+
+.spinner .rect4 {
+  -webkit-animation-delay: -0.9s;
+  animation-delay: -0.9s;
+}
+
+.spinner .rect5 {
+  -webkit-animation-delay: -0.8s;
+  animation-delay: -0.8s;
+}
+
+@-webkit-keyframes stretchdelay {
+  0%, 40%, 100% { -webkit-transform: scaleY(0.4) }  
+  20% { -webkit-transform: scaleY(1.0) }
+}
+
+@keyframes stretchdelay {
+  0%, 40%, 100% { 
+    transform: scaleY(0.4);
+    -webkit-transform: scaleY(0.4);
+  }  20% { 
+    transform: scaleY(1.0);
+    -webkit-transform: scaleY(1.0);
+  }
+}
+
+
+

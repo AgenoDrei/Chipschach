@@ -1,0 +1,47 @@
+body {
+	background-color: grey;
+	background: url(../../img/muster.png);
+	color: #333366;
+	font-family: "Arial Rounded MT Bold", "HelveticaNeue-Light",
+		"Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial,
+		"Lucida Grande", sans-serif;
+	font-size: 170%;
+}
+	#body-container {
+		z-index: 10;
+	}
+	#errorInfo {
+		position: absolute;
+		left: 0; right: 0;
+		margin: 150px auto;
+		width: 500px;
+		height: 500px;
+		text-align: center;
+		
+		display: none;
+	}
+
+.centered {
+	position: absolute;
+	left: 0px;
+	right: 0px;
+	margin: 0px auto;
+}
+
+#logo_center {
+	height: 30%;
+	top: 5%;
+}
+#userdata {		/*id for table ...*/
+	display: table;	
+	top: 35%;
+}
+	.userdata {
+	    display: table-cell;
+	    vertical-align: middle;
+	}
+	.userdata button {
+		display: block;
+		margin: 0 auto;
+		width: 350px;
+	}

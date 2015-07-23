@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="UTF-8">
+<script>
+//Editor-Logic
+	var figures = [];
+
+	
+	
+	function allowDrop(ev) {
+		ev.preventDefault();
+	}
+	
+	function drag(ev) {
+		ev.dataTransfer.setData("id", ev.target.id);
+	}
+	
+	function drop(ev) {
+		ev.preventDefault();
+			
+		var posi_pairs = ev.target.id.split('|');
+		if (isNaN(posi_pairs[0]) || isNaN(posi_pairs[1])) {
+			console.log("Feld bereits belegt...");
+			return;
+		}
+		
+		var figureId = ev.dataTransfer.getData("id");
+		var nodeCopy = document.getElementById(figureId).cloneNode(false);
+		ev.target.appendChild(nodeCopy);
+		
+		var figureId_pairs = figureId.split('_');
+	    figures[figures.length] = {
+		    type: figureId_pairs[0],
+		    color: figureId_pairs[1],
+	    	x: posi_pairs[0],
+	    	y: posi_pairs[1]
+	    }
+	    
+	    console.log(figureId_pairs[0] + " " + figureId_pairs[1] + " added at " + posi_pairs[0] + "|" + posi_pairs[1]);
+	}
+
+	//func
+		var deleteElementFromArray = function(elem, array) {
+			var elem_pairs = elem.split('|');
+
+			for (key in array) {
+				if (array[key].x == elem_pairs[0] && array[key].y == elem_pairs[1]){
+					delete array[key];
+					console.log(elem_pairs[0] + "|" + elem_pairs[1] + ": deleted");
+				}
+			}
+
+			//merge Array within itself
+			for(var i = 0; i < array.length; i++) {
+				if (array[i] == undefined || array[i] == null) {
+					for (var j = i; j < array.length-1; j++)
+						array[j] = array[j+1];
+					break;
+				}
+			}
+			array.length = array.length-1;
+		}
+</script>
+<script type="text/javascript" src="../lib/jquery-1.11.1.js"></script>
+<script type="text/javascript" src="../lib/toastr.js"></script>
+<script type="text/javascript" src="src/main.js"></script>
+<script type="text/javascript" src="src/network.js"></script>
+<script type="text/javascript" src="src/saveRules.js"></script>
+<link rel="stylesheet" href="../lib/bootstrap.min.css" />
+<link rel="stylesheet" href="../lib/toastr.css" />
+<link rel="stylesheet" href="css/style.css" />
+
+<title>Chipschach - Editor</title>
+</head>
+
+<body>
+	<div id="body-container">
+		<div id="nav">
+			<div id="attributes">
+				<form class="form-inline" role="form">
+					<label for="name">Name</label>
+					<input type="text" class="form-control" id="name" placeholder="Name des Level">
+					
+					<label for="adress">Levelserver-Adresse</label>
+					<input type="text" class="form-control" id="adress" value="localhost">
+				
+					<label style="margin-top: 15px;" for="modus">Spielmodus</label>
+					<select class="form-control" id="modus">
+						<option value="sp">Einzelspieler</option>
+						<option value="mp">Mehrspieler - Chipschach</option>
+						<option value="mp_mini">Mehrspieler - Minischach</option>
+					</select>
+					<div id="min-turns">
+						<label for="sp_min_turns">Minimale Zugzahl</label>
+						<input type="number" class="form-control" id="sp_min_turns">
+					</div>
+					<div id="win-condition">
+						<label for="mini_win">Siegbedingung</label>
+						<select class="form-control" id="mini_win">
+							<option value="3">Schachmatt</option>
+							<option value="10">Weißer Bauer auf Grundreihe</option>
+						</select>
+					</div>
+				
+					<label style="margin-top: 10px;" for="description">Beschreibung</label>
+					<textarea class="form-control" id="description" placeholder="Beschreibung / Aufgabe"></textarea>
+					
+					<img src="../img/save.png" title="Level Speichern" height="75px" class="navicon" id="save">
+				</form>
+			</div>
+			<img src="../img/close.png" title="zum Hauptmenü" height="75px" class="navicon" id="close">
+		</div>
+		<div id="board-container">
+			<div id="cr-stage">
+			</div>
+		</div>
+		<div id="elements" class="row">
+			<ul class="col-md-4">
+				<li> <img id="Tower_Yellow" src="../img/chips'n'figures/TowerYellow.png" alt="Turm Gelb" draggable="true" ondragstart="drag(event)"></li>
+				<li> <img id="Bishop_Yellow" src="../img/chips'n'figures/BishopYellow.png" alt="Läufer Gelb" draggable="true" ondragstart="drag(event)"></li>
+				<li> <img id="Queen_Yellow" src="../img/chips'n'figures/QueenYellow.png" alt="Dame Gelb" draggable="true" ondragstart="drag(event)"></li>
+				<li> <img id="King_Yellow" src="../img/chips'n'figures/KingYellow.png" alt="König Gelb" draggable="true" ondragstart="drag(event)"></li>
+				<li> <img id="Knight_Yellow" src="../img/chips'n'figures/KnightYellow.png" alt="Springer Gelb" draggable="true" ondragstart="drag(event)"></li>
+				<li> <img id="Pawn_Yellow" src="../img/chips'n'figures/PawnYellow.png" alt="Bauer Gelb" draggable="true" ondragstart="drag(event)"></li>
+			</ul>
+			<ul class="col-md-4">
+				<li></li>
+				<li> <img id="Chip_Yellow" src="../img/chips'n'figures/ChipYellow.png" alt="Chip Gelb" draggable="true" ondragstart="drag(event)"></li>
+				<li> <img id="Chip_Blue" src="../img/chips'n'figures/ChipBlue.png" alt="Chip Blau" draggable="true" ondragstart="drag(event)"></li>
+				<li> <img id="Chip_Red" src="../img/chips'n'figures/ChipRed.png" alt="Chip Rot" draggable="true" ondragstart="drag(event)"></li>
+				<li> <img id="Chip_Green" src="../img/chips'n'figures/ChipGreen.png" alt="Chip Grün" draggable="true" ondragstart="drag(event)"></li>
+				<li></li>
+			</ul>
+			<ul class="col-md-4">
+				<li> <img id="Tower_Blue" src="../img/chips'n'figures/TowerBlue.png" alt="Turm Blau" draggable="true" ondragstart="drag(event)"></li>
+				<li> <img id="Bishop_Blue" src="../img/chips'n'figures/BishopBlue.png" alt="Läufer Blau" draggable="true" ondragstart="drag(event)"></li>
+				<li> <img id="Queen_Blue" src="../img/chips'n'figures/QueenBlue.png" alt="Dame Blau" draggable="true" ondragstart="drag(event)"></li>
+				<li> <img id="King_Blue" src="../img/chips'n'figures/KingBlue.png" alt="König Blau" draggable="true" ondragstart="drag(event)"></li>
+				<li> <img id="Knight_Blue" src="../img/chips'n'figures/KnightBlue.png" alt="Springer Blau" draggable="true" ondragstart="drag(event)"></li>
+				<li> <img id="Pawn_Blue" src="../img/chips'n'figures/PawnBlue.png" alt="Bauer Blau" draggable="true" ondragstart="drag(event)"></li>
+			</ul>
+		</div>
+	</div>
+	<div id="errorInfo">
+		<h1>Fenster ist zu klein</h1>
+	</div>
+</body>
+</html>

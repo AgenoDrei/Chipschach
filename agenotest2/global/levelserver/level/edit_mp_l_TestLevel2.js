@@ -1,0 +1,1 @@
+Level = {"type":"lvl","board":{"0":{"type":"Tower","color":"Yellow","x":"0","y":"7"},"1":{"type":"Tower","color":"Blue","x":"7","y":"7"},"2":{"type":"Chip","color":"Green","x":"7","y":"0"},"3":{"type":"Chip","color":"Green","x":"0","y":"0"}},"name":"TestLevel2","description":"jdsöfdsakfödla","win":0,"filename":"edit_mp_l_TestLevel2"}

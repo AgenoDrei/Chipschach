@@ -1,0 +1,59 @@
+#profile-container1 {
+	position: absolute;
+	top: 0;
+	
+	left: 0px;
+	right: 0px;
+	margin: 0 auto;
+}
+	#nav #counter #chipCounter_value1 {
+		width: 75px;
+		height: 50px;
+		padding: 5px;
+		float: right;
+		background-color: white;
+		border-radius: 15px;
+		
+		font-size: 40px;
+		line-height: 1;
+		text-align: center;
+	}
+
+.navicons_inDaMiddle {
+	width: 160px;
+	height: 110px;
+	
+	position: absolute; /* Zentrierung */
+	top: 0px;
+	bottom: 0px;
+	left: 0px;
+	right: 0px;
+	margin: auto auto;
+}
+
+	.navicons_inDaMiddle .navButtons{
+			margin: 10px auto;
+			display: block;
+			height: 35px;
+	}
+
+#profile-container2 {
+	position: absolute;
+	bottom: 0;
+	
+	left: 0px;
+	right: 0px;
+	margin: 0 auto;
+}
+	#nav #counter #chipCounter_value2 {
+		width: 75px;
+		height: 50px;
+		padding: 5px;
+		float: right;
+		background-color: white;
+		border-radius: 15px;
+		
+		font-size: 40px;
+		line-height: 1;
+		text-align: center;
+	}

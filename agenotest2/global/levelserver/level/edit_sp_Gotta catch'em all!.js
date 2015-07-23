@@ -1,0 +1,30 @@
+Level = {
+	"type":"lvl",
+	"filename":"edit_Gotta catch'em all!",
+	"board":{
+		"0":{"type":"Bishop","color":"Yellow","x":"3","y":"3"},
+		"1":{"type":"Bishop","color":"Yellow","x":"4","y":"3"},
+		"2":{"type":"Knight","color":"Yellow","x":"3","y":"4"},
+		"3":{"type":"Knight","color":"Yellow","x":"4","y":"4"},
+		"4":{"type":"Chip","color":"Blue","x":"2","y":"2"},
+		"5":{"type":"Chip","color":"Blue","x":"2","y":"1"},
+		"6":{"type":"Chip","color":"Blue","x":"1","y":"2"},
+		"7":{"type":"Chip","color":"Blue","x":"5","y":"1"},
+		"8":{"type":"Chip","color":"Blue","x":"5","y":"2"},
+		"9":{"type":"Chip","color":"Blue","x":"6","y":"2"},
+		"10":{"type":"Chip","color":"Blue","x":"5","y":"5"},
+		"11":{"type":"Chip","color":"Blue","x":"6","y":"5"},
+		"12":{"type":"Chip","color":"Blue","x":"5","y":"6"},
+		"13":{"type":"Chip","color":"Blue","x":"2","y":"5"},
+		"14":{"type":"Chip","color":"Blue","x":"1","y":"5"},
+		"15":{"type":"Chip","color":"Blue","x":"2","y":"6"},
+		"16":{"type":"Chip","color":"Blue","x":"7","y":"7"},
+		"17":{"type":"Chip","color":"Blue","x":"0","y":"7"},
+		"18":{"type":"Chip","color":"Blue","x":"0","y":"0"},
+		"19":{"type":"Chip","color":"Blue","x":"7","y":"0"}
+	},
+	"name":"Gotta catch'em all!",
+	"description":"You can do it!",
+	"win":0,
+	"min_turns":"42"
+}

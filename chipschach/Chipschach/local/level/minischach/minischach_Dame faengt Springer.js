@@ -1,0 +1,1 @@
+Level = {"type":"lvl","board":{"0":{"type":"Queen","color":"Yellow","x":"3","y":"7"},"1":{"type":"Knight","color":"Blue","x":"4","y":"3"}},"name":"Dame fängt Springer","description":"Die Dame muss versuchen den Springer zu fangen bzw. zu schlagen.","win":"3","filename":"edit_minischach_Dame fängt Springer"}

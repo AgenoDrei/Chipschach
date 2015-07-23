@@ -1,0 +1,25 @@
+Level = {
+	board : {
+		0: {type: 'Chip', color:'Yellow', x: 2, y: 2},
+		1: {type: 'Chip', color:'Yellow', x: 2, y: 3},
+		2: {type: 'Chip', color:'Yellow', x: 2, y: 4},
+		3: {type: 'Chip', color:'Yellow', x: 2, y: 5},
+		4: {type: 'Chip', color:'Yellow', x: 3, y: 2},
+		5: {type: 'Chip', color:'Yellow', x: 3, y: 3},
+		6: {type: 'Chip', color:'Yellow', x: 3, y: 4},
+		7: {type: 'Chip', color:'Yellow', x: 3, y: 5},
+		8: {type: 'Chip', color:'Blue', x: 4, y: 2},
+		9: {type: 'Chip', color:'Blue', x: 4, y: 3},
+		10: {type: 'Chip', color:'Blue', x: 4, y: 4},
+		11: {type: 'Chip', color:'Blue', x: 4, y: 5},
+		12: {type: 'Chip', color:'Blue', x: 5, y: 2},
+		13: {type: 'Chip', color:'Blue', x: 5, y: 3},
+		14: {type: 'Chip', color:'Blue', x: 5, y: 4},
+		15: {type: 'Chip', color:'Blue', x: 5, y: 5},
+		16: {type: 'Tower', color:'Yellow', x: 0, y: 7},
+		17: {type: 'Tower', color:'Blue', x: 7, y: 0},
+	},
+	name: '2 Spieler - Turm - Level 2',
+	description : 'Jetzt sind beide Reihen von Chips nebeneinander!',
+	win: 0
+}
