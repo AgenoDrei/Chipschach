@@ -1,0 +1,1 @@
+Level = {"type":"lvl","board":{"0":{"type":"Tower","color":"Yellow","x":"0","y":"7"},"1":{"type":"Chip","color":"Blue","x":"7","y":"2"}},"name":"rook_1_1","description":"Schlage mit dem Turm den blauen Chip. Was ist der schnellste Weg?","win":0,"filename":"edit_sp_rook_1_1","min_turns":"2"}

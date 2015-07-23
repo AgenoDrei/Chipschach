@@ -1,0 +1,1 @@
+Level = {"type":"lvl","board":{"0":{"type":"King","color":"Yellow","x":"4","y":"7"},"1":{"type":"Chip","color":"Blue","x":"2","y":"2"}},"name":"König Level 1.1","description":"Schlage mit dem König auf dem schnellsten Weg den Chip!","win":0,"filename":"edit_sp_king_1_1","min_turns":"5"}
