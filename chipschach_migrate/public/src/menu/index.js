@@ -9,7 +9,7 @@ var main = function() {
 			$('#logo_center').fadeOut(400);
 			
 			setTimeout(function() {
-				window.location.replace("index/menu.html")
+				window.location.replace("menu")
 			}, 350);
 		} else {
 			window.alert("Passwort ist leider falsch")

@@ -1,4 +1,4 @@
-	var main = function() {
+function main() {
 	//fadeIn onto Menu-Items
 	//$('.cell').fadeIn(1000);
 	$('.cell').css("display", "table-cell");
@@ -10,26 +10,11 @@
 		$(this).next().slideToggle(500);
 	});
 	
-	/*//control Size
-	window.onresize = function(event) {
-		if (window.innerWidth < 1100) {
-			$('#body-container').hide();
-			$('#errorInfo').show();
-		} else if (window.innerWidth >= 1100) {
-			$('#body-container').show();
-			$('#errorInfo').hide();
-		}
-	};*/
-	
-	
 	// Event: Close-Icon
 	$('.logo_exit').click(function() {
 		window.location.href = "http://www.schach-fuer-kids.de/";
 	});
 
-	
-	
-	
 	// Event: choose the Menu
 	var oneIsActive = false;
 
@@ -140,7 +125,7 @@
 		}
 	});
 		$('#btn_mp_g_continue').click(function() {
-			window.location.href = "../global/client/multiplayer.html";
+			window.location.href = "../global/multiplayer";
 		});
 		$('#btn_mp_g_back').click(function() { // ...und zurück
 			$("#overlay").fadeOut(400);
@@ -161,7 +146,7 @@
 		}
 	});
 		$('#btn_edit_continue').click(function() {
-			window.location.href = "../editor/editor.html";
+			window.location.href = "../editor";
 		});
 		$('#btn_edit_back').click(function() { // ...und zurück
 			$('#editor').hide();
@@ -170,28 +155,6 @@
 			oneIsActive = false;
 		});	
 
-};
+}
 
-var data;
-$(document).ready(loadJSON("data.json", function(responseText) {
-    data = JSON.parse(responseText);
-    var result = new EJS({url: 'menu.ejs'}).render(data);
-    document.body.innerHTML = result;
-	console.log('DEBUG> Menu data loaded!');
-	main();
-}));
-
-
- function loadJSON(path, callback) {   
-    var xobj = new XMLHttpRequest();
-        xobj.overrideMimeType("application/json");
-    xobj.open('GET', path, true); // Replace 'my_data' with the path to your file
-    xobj.onreadystatechange = function () {
-          if (xobj.readyState == 4) {
-            // Required use of an anonymous callback as .open will NOT return a value but simply returns undefined in asynchronous mode
-            callback(xobj.responseText);
-            //console.log(xobj.responseText);
-          }
-    };
-    xobj.send(null);  
- }
+$(document).ready(main);

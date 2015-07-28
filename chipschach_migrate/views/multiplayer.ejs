@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+	<script type="text/javascript" src="src/local/game.js"></script>
+	<script type="text/javascript" src="lib/jquery.mobile.custom.js"></script>
+	<script type="text/javascript" src="lib/jquery-1.11.1.js"></script>
+	<script type="text/javascript" src="lib/crafty.js"></script>
+	<script type="text/javascript" src="lib/toastr.js"></script>
+	<script type="text/javascript" src="src/local/components.js"></script>
+	<script type="text/javascript" src="src/local/scenes.js"></script>
+	<script type="text/javascript" src="src/local/rules.js"></script>
+	<script type="text/javascript" src="src/local/win.js"></script>
+	<link rel="stylesheet" href="lib/bootstrap.min.css" />
+	<link rel="stylesheet" href="lib/toastr.css"/>
+	<link rel="stylesheet" href="css/local/style.css" />
+	<link rel="stylesheet" href="css/local/style_multi.css" />
+	<script type="text/javascript" src="src/local/main.js"></script>
+
+	<title>Chipschach - Multiplayer</title>
+</head>
+
+<body>
+	<div id="overlay"></div>
+	<div id="body-container">
+		<div id="nav">
+			<div id="btn_menu"></div>
+			<div id="profile-container1">
+				<div class="navicon" id="profilePic">
+					<img src="../img/profilPicErsatz.bmp">
+				</div>
+				<div id="counter-container">
+					<div class="navicon" id="counter">
+						<img src="../img/chips'n'figures/ChipGreen.png">
+						<div id="chipCounter_value1">
+							-
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="navicons_inDaMiddle">
+				<!--<img src="../img/remis.png" title="Remis anbieten" class="navButtons"> -->
+				<!--<img src="../img/help/help.png" title="Hilfe anzeigen" height="75px" id="showHelp">-->
+				<img src="../img/close.png" title="zum Hauptmenü" height="75px" id="close" style="display: block; margin: 0 auto;">
+				<img src="../img/yield.png" title="Aufgeben" class="navButtons" id="yield">
+			</div>
+			
+			<div id="profile-container2">
+				<div id="counter-container">
+					<div class="navicon" id="counter">
+						<img src="../img/chips'n'figures/ChipGreen.png" style="width:50px; height: 50px;">
+						<div id="chipCounter_value2">
+							-
+						</div>
+					</div>
+				</div>
+				<div class="navicon" id="profilePic">
+					<img src="../img/profilPicErsatz.bmp">
+				</div>
+			</div>
+		</div>
+		<div id="board-container">
+			<div id="turnYellow"></div>
+			<div id="turnBlue"></div>
+			
+			<div id='menu'>
+				<img src="../img/logo_small.png" height="150px">
+				<h3 style="text-align: center">Dieses Level ist noch nicht erstellt.</h3>
+				<p></p>
+					<div id="start">
+						<button type="button" class="btn btn-success btn-lg" id="btn_mp_start">Start!</button>
+						<button type="button" class="btn btn-default btn-lg" id="btn_difficulty" title="zum ändern des Spielmodus, hier klicken">Schlagen ist aus</button><br>
+						<button type="button" class="btn btn-success btn-lg" id="btn_nextLevel">Weiter ins nächstes Level! </button>
+					</div>
+				</div>
+				<div id="cr-stage"></div>
+			</div>
+	<div id="errorInfo">
+		<h1>Fenster ist zu klein</h1>
+	</div>
+</body>
+</html>

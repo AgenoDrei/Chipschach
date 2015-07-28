@@ -8,7 +8,6 @@ router.get('/', function(req, res, next) {
 });
 
 router.get('/menu_data', function(req, res, next) {
-
 	var obj;
 	fs.readFile('data/data.json', 'utf8', function (err, data) {
 		if (err) throw err;
@@ -29,6 +28,24 @@ router.get('/level/:name', function(req, res, next) {
 			res.send(data);
 		});
 	// res.end();
+});
+
+router.get('/menu', function(req, res, next) {
+	var obj;
+	fs.readFile('data/data.json', 'utf8', function (err, data) {
+		if (err) throw err;
+			obj = JSON.parse(data);
+			res.render('menu', obj);
+		});
+		
+	
+});
+
+router.get('/singleplayer', function(req, res, next) {
+	res.render('singleplayer', null);
+});
+router.get('/multiplayer', function(req, res, next) {
+	res.render('multiplayer', null);
 });
 
 
