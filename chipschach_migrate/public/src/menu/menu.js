@@ -104,7 +104,7 @@ function main() {
 		}
 	});
 		$('#btn_classic_continue').click(function() {
-			window.location.href = "../local/multiplayer.html?level=level/minischach/minischach_grundstellung";
+			window.location.href = "multiplayer?level=minischach_grundstellung";
 		});
 		$('#btn_classic_back').click(function() { // ...und zurück
 			$("#overlay").fadeOut(400);
@@ -125,7 +125,7 @@ function main() {
 		}
 	});
 		$('#btn_mp_g_continue').click(function() {
-			window.location.href = "../global/multiplayer";
+			window.location.href = "global";
 		});
 		$('#btn_mp_g_back').click(function() { // ...und zurück
 			$("#overlay").fadeOut(400);
@@ -146,7 +146,7 @@ function main() {
 		}
 	});
 		$('#btn_edit_continue').click(function() {
-			window.location.href = "../editor";
+			window.location.href = "editor";
 		});
 		$('#btn_edit_back').click(function() { // ...und zurück
 			$('#editor').hide();

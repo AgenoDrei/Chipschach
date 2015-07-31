@@ -5,7 +5,7 @@ var rules = require('./rules.js'); //chess rules
 var win = require('./win.js'); //everything to check if someone won
 var cc = require('change-case'); //change case of strings
 var DEBUG = false;
-var PATH = "./level/";
+var PATH = "./data/level/mp_global/";
 /* 
  * provided constructor of a game object
  * 

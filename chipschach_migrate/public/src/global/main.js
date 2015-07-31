@@ -56,8 +56,6 @@ $('#btn_menu').click(function(e) {
 		} catch(e) {
 			//Crafty.stop();
 		}
-		
-		
 	});
 	
 	/*

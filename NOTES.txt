@@ -1,0 +1,6 @@
+Änderungen am Server: 	Nichts machen bei Anmeldung
+			Client teilt mit ob Spieler 1 oder 2
+				1) Erstelle neuen Raum, setze Spieler auf die Serverliste mit eindeutiger ID
+				2) Angabe zu welchem Raum gejoint werden soll (ID)
+			Clinet 1 setzt Spieloptionen
+			Client 2 bekommt Spieldaten gesendet
