@@ -62,6 +62,9 @@ router.get('/multiplayer', function(req, res, next) {
 router.get('/editor', function(req, res, next) {
 	res.render('editor', null);
 });
+router.get('global', function(req, res, next) {
+	res.render('global', null);
+});
 
 
 module.exports = router;

@@ -101,6 +101,7 @@ var main = function() {
 			
 			$.post( "level/newLevel", level, function( data ) {
 				console.log("Posted level sucessfull to the server!");
+				alert("Level erstellt!");
 			});
 			
 		} else {
