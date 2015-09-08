@@ -1,15 +1,8 @@
 //var URL = $("#address").val();
 var PORT = 3001;
+var MODUS = '';
 
 var main = function() {
-	//Try to grab the level list from the server
-	try { //Hello someone there?
-		//connectToLevelServer('ws://'+URL+':'+PORT);
-		//sendText('Hallo');
-	} catch(e) { //Nope nobody at home
-		//console.log(e.message);
-	}
-	
 //Start Game
 if (window.innerWidth > 900 && $('#nav').css("left") == "-250px") {
 		$('#nav').css("left", "0px");
@@ -21,6 +14,13 @@ if (window.innerWidth > 900 && $('#nav').css("left") == "-250px") {
 		$('#btn_menu').show();
 }
 
+if(MODUS == "create") {
+	$('#btn_mp_start').hide();
+	$('#btn_difficulty').hide();
+	$('#menu p').hide();
+	$('.spinner').show();
+} else if(MODUS == "join") {
+}
 
 //relevant for menu Button
 $('#btn_menu').click(function(e) {
@@ -126,7 +126,26 @@ $('#btn_menu').click(function(e) {
 
 }
 
-$(document).ready(main); //Will be executed when the html file is loaded
+$(document).ready(function() {
+    var key = 'modi';
+	//Getting the get parameter from the url
+	var query = window.location.search.substring(1);
+	var pairs = query.split('&');
+	if (pairs.length > 1) {
+		console.log("Please enter only one parameter!")
+		return undefined;
+	}
+	//Split get parameter in key and value, e.g. level : sp_tower_1
+	var pair = pairs[0].split('=');
+	if (pair[0] == key) {
+        if (pair[1].length > 0)
+			MODUS = pair[1];
+            main();
+	} else {
+		console.log("Please enter at least one parameter!");
+		return undefined;
+	}   
+}); //Will be executed when the html file is loaded
 
 function adjustScreen(event) {
 	if (window.innerWidth > 900 && $('#nav').css("left") == "-250px") {
