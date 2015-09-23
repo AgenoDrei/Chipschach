@@ -6,13 +6,14 @@ var connection = null; //stores the current connection
  * host: the complete adress of a server
  * 		e.g "ws://localhost:1764"
  */
-function connect(host) {
+function connect(host, player, roomName) {
 	
 connection = new WebSocket(host, ["kekse"]); //create new Connection 
 	
 	//when a connection is opened
 	connection.onopen = function(e) {
 		console.log("WebSocket: Connection established");
+		send('{"type": "hello", "player": "'+player+'", "name": "'+roomName+'"}');
 	}
 	
 	//when a connection is closed
@@ -23,7 +24,7 @@ connection = new WebSocket(host, ["kekse"]); //create new Connection
 		if(connection == null) return;
 		connection = null;
 		console.log("Die Verbindung wurde geschlossen.");
-		location.reload();
+		//location.reload();
 	}
 	
 	//when there was an error
@@ -32,7 +33,7 @@ connection = new WebSocket(host, ["kekse"]); //create new Connection
 		connection = null;
 		console.log("Ein Fehler ist aufgetreten.");
 		toastr.error("Verbindungsfehler :(");
-		setTimeout(function(){location.reload();},2000);
+		//setTimeout(function(){location.reload();},2000);
 	}
 	
 	//Evaluation of server messages
@@ -95,9 +96,9 @@ connection = new WebSocket(host, ["kekse"]); //create new Connection
 			}
 			break;
 		case 'exit': //when the server closes the connection
-			console.log("Dein Gegner hat die Verbindung getrennt!");
+			console.log("Die Verbindung wurde getrennt!");
 			connection.close();
-			location.reload();
+			//location.reload();
 			break;
 		case 'win': //when a player has won the game
 			Game.move(m.x, m.y, m.oldX, m.oldY, convertPlayer(m.player));

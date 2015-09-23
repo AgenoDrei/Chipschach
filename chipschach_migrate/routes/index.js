@@ -65,6 +65,17 @@ router.get('/editor', function(req, res, next) {
 router.get('/global', function(req, res, next) {
 	res.render('global', null);
 });
-
+router.get('/global/getRooms', function(req, res, next) {
+	var server = req.app.locals.server;
+	var obj = server.rooms;
+	var response = [];
+	var count = 0;
+	
+	obj.forEach(function(item) {
+		response[count] = {"name: " : item.name, "id" : item.id};
+		count++;
+	});
+	res.json(response);
+});
 
 module.exports = router;

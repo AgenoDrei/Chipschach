@@ -1,6 +1,7 @@
 //var URL = $("#address").val();
 var PORT = 3001;
 var MODUS = '';
+var NAME = '';
 
 var main = function() {
 //Start Game
@@ -19,7 +20,14 @@ if(MODUS == "create") {
 	$('#btn_difficulty').hide();
 	$('#menu p').hide();
 	$('.spinner').show();
+	try {
+		connect("ws://"+$('#address').val()+":"+PORT, "1", NAME);
+	} catch(e) {}
 } else if(MODUS == "join") {
+	$('#menu').hide();
+	try {
+		connect("ws://"+$('#address').val()+":"+PORT, "2", NAME);
+	} catch(e) {}
 }
 
 //relevant for menu Button
@@ -127,19 +135,20 @@ $('#btn_menu').click(function(e) {
 }
 
 $(document).ready(function() {
-    var key = 'modi';
 	//Getting the get parameter from the url
 	var query = window.location.search.substring(1);
 	var pairs = query.split('&');
-	if (pairs.length > 1) {
-		console.log("Please enter only one parameter!")
+	if (pairs.length > 2 && pairs.length < 2) {
+		console.log("Please only two parameter!")
 		return undefined;
 	}
 	//Split get parameter in key and value, e.g. level : sp_tower_1
-	var pair = pairs[0].split('=');
-	if (pair[0] == key) {
-        if (pair[1].length > 0)
-			MODUS = pair[1];
+	var pair1 = pairs[0].split('=');
+	var pair2 = pairs[1].split('=');
+	if (pair1[0] == "modi" && pair2[0] == "name") {
+        if (pair1[1].length > 0 && pair2[1].length > 0)
+			MODUS = pair1[1];
+			NAME = pair2[1];
             main();
 	} else {
 		console.log("Please enter at least one parameter!");
