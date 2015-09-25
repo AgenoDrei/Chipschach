@@ -65,6 +65,11 @@ router.get('/editor', function(req, res, next) {
 router.get('/global', function(req, res, next) {
 	res.render('global', null);
 });
+router.get('/lobby', function(req, res, next) {
+	res.render('lobby', null);
+});
+
+
 router.get('/global/getRooms', function(req, res, next) {
 	var server = req.app.locals.server;
 	var obj = server.rooms;

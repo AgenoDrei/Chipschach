@@ -1,0 +1,99 @@
+body {
+	background-color: grey;
+	background: url(../../img/muster.png);
+	color: #333366;
+	font-family: "Arial Rounded MT Bold", "HelveticaNeue-Light",
+		"Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial,
+		"Lucida Grande", sans-serif;
+	padding: 0 0 0 0;
+	margin: 0;
+}
+
+#body-container {
+		width: 800px;
+		height: 600px;
+		margin: auto;
+		position: absolute;
+		right: 0; left: 0;
+		top: -10%; bottom: 0;
+        background-color: rgba(150,150,150,0.6);
+        border-radius: 20px;
+        box-shadow: 0px 0px 25px rgba(0,0,100,0.5);
+}
+
+#logo_container {
+    height: 180px;
+    width: 180px;
+    margin: 10px auto;
+}
+
+.logo {
+		background: url(../../img/logo_large.png);
+		background-size: 170px 190px;
+		background-repeat: no-repeat;
+		background-position: center;
+        width: 180px;
+        height: 180px;
+}
+
+#hint_container {
+    height: 180px;
+    margin: 10px auto;
+}
+
+#hint_container p {
+    color: darkgreen;
+    font-size: 24px;
+    font-weight: bolder;
+    text-align: center;
+}
+/************Table Elements****************/
+.table {
+	display: table;
+	margin: 0px -80px 0;
+	border-spacing: 45px 10px;
+	min-width: 960px;
+	width: 70%;
+}
+.row {
+	display: table-row;
+}
+.cell {
+	display: table-cell;
+	text-align: center;
+	vertical-align: middle;
+	border-radius: 150px;
+	width: 275px;
+	height: 275px;
+	font-weight: bold;
+	font-size: 28px;
+	line-height: 1.1;
+	//display: none;
+	cursor: pointer;
+}
+
+.cell:hover {
+    box-shadow: 0px 0px 15px darkblue;
+}
+
+.join {
+		background-color: white;
+		opacity: 0.8;
+}
+    
+.create {
+		background-color: white;
+		opacity: 0.8;
+}
+
+/************OVERLAYS**********************/
+#overlay {
+		position: fixed;
+		top: 0;
+		left: 0;
+		height: 100%;
+		width: 100%;
+		background: rgba(0,0,0, 0.4);
+		z-index: 10;
+		display: none;
+}

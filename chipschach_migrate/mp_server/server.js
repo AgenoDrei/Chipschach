@@ -50,6 +50,7 @@ for(var i = 0; i < MAXROOMS; i++) {
 //When a new connection is opened
 wsserver.on("request", function(req) {
 	ID++;
+    console.log("Server: New Connection " + req.origin);
 	var connection = req.accept("kekse", req.origin); //Accept connection with "kekse" protocol
 	console.log("Connection " + connection.remoteAddress + " accepted.");
 	

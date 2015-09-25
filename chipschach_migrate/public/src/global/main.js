@@ -138,7 +138,7 @@ $(document).ready(function() {
 	//Getting the get parameter from the url
 	var query = window.location.search.substring(1);
 	var pairs = query.split('&');
-	if (pairs.length > 2 && pairs.length < 2) {
+	if (pairs.length > 2 || pairs.length < 2) {
 		console.log("Please only two parameter!")
 		return undefined;
 	}
