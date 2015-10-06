@@ -1,0 +1,77 @@
+0 info it worked if it ends with ok
+1 verbose cli [ 'C:\\Program Files\\nodejs\\\\node.exe',
+1 verbose cli   'C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js',
+1 verbose cli   'install',
+1 verbose cli   'ejssave' ]
+2 info using npm@1.4.28
+3 info using node@v0.10.32
+4 verbose node symlink C:\Program Files\nodejs\\node.exe
+5 warn package.json chipschach_migrate@1.1.0 No README data
+6 warn package.json fs@0.0.2 fs is also the name of a node core module.
+7 warn package.json fs@0.0.2 No description
+8 warn package.json fs@0.0.2 No repository field.
+9 warn package.json fs@0.0.2 No README data
+10 verbose readDependencies using package.json deps
+11 verbose cache add [ 'ejssave', null ]
+12 verbose cache add name=undefined spec="ejssave" args=["ejssave",null]
+13 verbose parsed url { protocol: null,
+13 verbose parsed url   slashes: null,
+13 verbose parsed url   auth: null,
+13 verbose parsed url   host: null,
+13 verbose parsed url   port: null,
+13 verbose parsed url   hostname: null,
+13 verbose parsed url   hash: null,
+13 verbose parsed url   search: null,
+13 verbose parsed url   query: null,
+13 verbose parsed url   pathname: 'ejssave',
+13 verbose parsed url   path: 'ejssave',
+13 verbose parsed url   href: 'ejssave' }
+14 silly lockFile 4a7dbb88-ejssave ejssave
+15 verbose lock ejssave C:\Users\IBM_ADMIN\AppData\Roaming\npm-cache\4a7dbb88-ejssave.lock
+16 silly lockFile 4a7dbb88-ejssave ejssave
+17 silly lockFile 4a7dbb88-ejssave ejssave
+18 verbose addNamed [ 'ejssave', '' ]
+19 verbose addNamed [ null, '*' ]
+20 silly lockFile dc2349dc-ejssave ejssave@
+21 verbose lock ejssave@ C:\Users\IBM_ADMIN\AppData\Roaming\npm-cache\dc2349dc-ejssave.lock
+22 silly addNameRange { name: 'ejssave', range: '*', hasData: false }
+23 verbose request where is /ejssave
+24 verbose request registry https://registry.npmjs.org/
+25 verbose request id 2693fc6b051bc334
+26 verbose url raw /ejssave
+27 verbose url resolving [ 'https://registry.npmjs.org/', './ejssave' ]
+28 verbose url resolved https://registry.npmjs.org/ejssave
+29 verbose request where is https://registry.npmjs.org/ejssave
+30 info trying registry request attempt 1 at 22:47:02
+31 http GET https://registry.npmjs.org/ejssave
+32 http 404 https://registry.npmjs.org/ejssave
+33 silly registry.get cb [ 404,
+33 silly registry.get   { 'content-type': 'application/json',
+33 silly registry.get     'cache-control': 'max-age=0',
+33 silly registry.get     'content-length': '2',
+33 silly registry.get     'accept-ranges': 'bytes',
+33 silly registry.get     date: 'Tue, 06 Oct 2015 20:46:36 GMT',
+33 silly registry.get     via: '1.1 varnish',
+33 silly registry.get     age: '0',
+33 silly registry.get     connection: 'keep-alive',
+33 silly registry.get     'x-served-by': 'cache-fra1229-FRA',
+33 silly registry.get     'x-cache': 'MISS',
+33 silly registry.get     'x-cache-hits': '0',
+33 silly registry.get     'x-timer': 'S1444164396.266002,VS0,VE693' } ]
+34 silly lockFile dc2349dc-ejssave ejssave@
+35 silly lockFile dc2349dc-ejssave ejssave@
+36 error 404 Not Found
+36 error 404
+36 error 404 'ejssave' is not in the npm registry.
+36 error 404 You should bug the author to publish it
+36 error 404 It was specified as a dependency of 'chipschach_migrate'
+36 error 404
+36 error 404 Note that you can also install from a
+36 error 404 tarball, folder, or http url, or git url.
+37 error System Windows_NT 6.1.7601
+38 error command "C:\\Program Files\\nodejs\\\\node.exe" "C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js" "install" "ejssave"
+39 error cwd C:\Users\IBM_ADMIN\Desktop\Chipschach\Chipschach\chipschach_migrate
+40 error node -v v0.10.32
+41 error npm -v 1.4.28
+42 error code E404
+43 verbose exit [ 1, true ]

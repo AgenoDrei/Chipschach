@@ -23,7 +23,7 @@ var main = function() {
             $.each(data, function(k,v) {
                 if(v.id != -1) {
                     $("#first").css("display", "none");
-                    $(".opengames").append("<li> <a href='../global?modi=join&name="+v.id+"&level=irrelevat'>"+v.name+"</a></li>");
+                    $(".opengames").append("<a href='../global?modi=join&name="+v.id+"&level=irrelevat'><li>"+v.name+"</li></a>");
                 }
             });
         });
