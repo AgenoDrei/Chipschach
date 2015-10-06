@@ -55,32 +55,6 @@ wsserver.on("request", function(req) {
 	var connection = req.accept("kekse", req.origin); //Accept connection with "kekse" protocol
 	console.log("Connection " + connection.remoteAddress + " accepted.");
 	
-	/*for(var i = 0; i < MAXROOMS; i++) {	//Search for an empty room
-		if(rooms[i].connection1 == null) { //Hey we got one, Yay
-			var connection = req.accept("kekse", req.origin); //Accept connection with "kekse" protocol
-			console.log("Connection " + connection.remoteAddress + " accepted."); 
-			rooms[i].connection1 = connection;	//Hand over the connection to the latest room
-			rooms[i].connection1.sendUTF('{"type": "hello", "player": "1"}'); //Send a welcome to the new connection
-			rooms[i].game = new game.Game(i);  //Create a new game logic in the room
-			if(DEBUG)console.log("Server : ", '{"type": "hello", "player": "1"}');
-			break; //Nothing else to do, go and play!
-		} else if(rooms[i].connection1 != null && rooms[i].connection2 == null) { //No empty rooms? Search for one with only one connection
-			var connection = req.accept("kekse", req.origin); //Same stuff as above
-			console.log("Connection " + connection.remoteAddress + " accepted.");
-			rooms[i].connection2 = connection;
-			rooms[i].connection2.sendUTF('{"type": "hello", "player": "2"}');
-			rooms[i].connection1.sendUTF('{"type": "enemy", "player": "2"}'); //Player 1 has to know his enemy
-			rooms[i].game.sendLevel(); //Send the Level to both players
-			rooms[i].game.sendDetails(); //Send some Level information
-			if(DEBUG)console.log("Server : ", '{"type": "hello", "player": "2"}');
-			if(DEBUG)console.log("Server : ", '{"type": "enemy", "player": "2"}');
-			break;
-		} else if(i == MAXROOMS-1) {
-			req.reject(); //We're full, go away!
-			return;
-		}
-	}*/
-	
 	//When a client sends a message
 	connection.on("message", function(message) {
 
@@ -250,6 +224,9 @@ function endGame(connection) {
 		rooms[roomID].connection1 = null;
 		rooms[roomID].connection2 = null;
         rooms[roomID].full = false;
+        rooms[roomID].name = null;
+        rooms[roomID].id = -1;
+        rooms[roomID].currentTurn = 1;
 		rooms[roomID].game.clear();
 	}
 }

@@ -1,5 +1,6 @@
 //var URL = $("#address").val();
 var PORT = 3001;
+var HOST = 'ws://localhost:'+PORT;
 var MODUS = '';
 var NAMEID = '';
 var LEVEL = '';
@@ -22,12 +23,12 @@ if(MODUS == "create") {
 	$('#menu p').hide();
 	$('.spinner').show();
 	try {
-		connect("ws://"+$('#address').val()+":"+PORT, "1", NAMEID, LEVEL);
+		connect(HOST, "1", NAMEID, LEVEL);
 	} catch(e) {}
 } else if(MODUS == "join") {
 	$('#menu').hide();
 	try {
-		connect("ws://"+$('#address').val()+":"+PORT, "2", NAMEID, LEVEL);
+		connect(HOST, "2", NAMEID, LEVEL);
 	} catch(e) {}
 }
 
