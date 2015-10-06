@@ -1,1 +1,0 @@
-Level = {"type":"lvl","board":{"0":{"type":"Pawn","color":"Yellow","x":"1","y":"6"},"1":{"type":"Chip","color":"Blue","x":"2","y":"5"},"2":{"type":"Chip","color":"Blue","x":"3","y":"3"},"3":{"type":"Chip","color":"Blue","x":"4","y":"0"}},"name":"pawn_1_1","description":"Schlage auf dem schnellsten Weg die Chips!","win":0,"filename":"edit_sp_pawn_1_1","min_turns":"6"}

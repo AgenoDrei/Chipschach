@@ -1,1 +1,0 @@
-Level = {"type":"lvl","board":{"0":{"type":"Tower","color":"Yellow","x":"0","y":"7"},"1":{"type":"Chip","color":"Blue","x":"0","y":"0"},"2":{"type":"Chip","color":"Red","x":"0","y":"1"}},"name":"rook_1_3","description":"Schlage mit dem Turm auf dem schnellsten Weg den blauen Chip. Wie viele Züge benötigst Du?","win":0,"filename":"edit_sp_rook_1_3","min_turns":"3"}
