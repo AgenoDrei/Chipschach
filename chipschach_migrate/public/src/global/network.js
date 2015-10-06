@@ -1,4 +1,5 @@
 var connection = null; //stores the current connection
+var level = "";
 
 /*
  * connects to a websocket server
@@ -6,14 +7,15 @@ var connection = null; //stores the current connection
  * host: the complete adress of a server
  * 		e.g "ws://localhost:1764"
  */
-function connect(host, player, roomName) {
+function connect(host, player, nameid, levelName) {
 	
 connection = new WebSocket(host, ["kekse"]); //create new Connection 
 	
 	//when a connection is opened
 	connection.onopen = function(e) {
 		console.log("WebSocket: Connection established");
-		send('{"type": "hello", "player": "'+player+'", "name": "'+roomName+'"}');
+        level = levelName;
+		send('{"type": "hello", "player": "'+player+'", "nameid": "'+nameid+'"}');
 	}
 	
 	//when a connection is closed
@@ -23,7 +25,7 @@ connection = new WebSocket(host, ["kekse"]); //create new Connection
 		// If there was an error, the connection already is set to null and a
 		if(connection == null) return;
 		connection = null;
-		console.log("Die Verbindung wurde geschlossen.");
+		setTimeout(function(){location.href="lobby?msg=Die Verbindung wurde geschlossen!";},0);
 		//location.reload();
 	}
 	
@@ -33,7 +35,7 @@ connection = new WebSocket(host, ["kekse"]); //create new Connection
 		connection = null;
 		console.log("Ein Fehler ist aufgetreten.");
 		toastr.error("Verbindungsfehler :(");
-		//setTimeout(function(){location.reload();},2000);
+		setTimeout(function(){location.href="lobby?msg=Ein Fehler ist aufgetreten!";},2000);
 	}
 	
 	//Evaluation of server messages
@@ -49,7 +51,7 @@ connection = new WebSocket(host, ["kekse"]); //create new Connection
 				$('#btn_difficulty').hide();
 				$('#menu p').hide();
 				$('.spinner').show();
-				send('{"type": "setGameProperties", "difficulty" : "' + Game.difficulty + '", "name" : "'+$('#level').val()+'"}'); //you can select the level
+				send('{"type": "setGameProperties", "difficulty" : "' + Game.difficulty + '", "name" : "'+level+'"}'); //you can select the level
 				Game.playerTurn = 'yellow';
 			} else { //or player 2
 				$('#menu').hide();
@@ -98,7 +100,7 @@ connection = new WebSocket(host, ["kekse"]); //create new Connection
 		case 'exit': //when the server closes the connection
 			console.log("Die Verbindung wurde getrennt!");
 			connection.close();
-			//location.reload();
+			setTimeout(function(){location.href="lobby?msg=Die Verbindung wurde getrennt!";},0);
 			break;
 		case 'win': //when a player has won the game
 			Game.move(m.x, m.y, m.oldX, m.oldY, convertPlayer(m.player));

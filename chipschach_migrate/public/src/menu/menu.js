@@ -125,8 +125,9 @@ function main() {
 		}
 	});
 		$('#btn_mp_g_continue').click(function() {
-			window.location.href = "global";
+			window.location.href = "lobby";
 		});
+        
 		$('#btn_mp_g_back').click(function() { // ...und zurück
 			$("#overlay").fadeOut(400);
 			$('#multiplayer_global').hide();

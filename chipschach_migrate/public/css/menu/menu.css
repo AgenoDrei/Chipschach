@@ -117,6 +117,10 @@ button {
 		opacity: 0.8;
 	}
 	.logo_minischach {
+        background: url(../../img/minischach.png);
+	    background-size: 130px 130px;
+		background-repeat: no-repeat;
+		background-position: center 60%; 
 		background-color: white;
 		opacity: 0.8;
 	}
@@ -138,9 +142,17 @@ button {
 		opacity: 0.8;
 	}
 	.logo_classicChess {
+        background: url(../../img/classicchess2.png);
+	    background-size: 140px 100px;
+		background-repeat: no-repeat;
+		background-position: center 75%; 
 		background-color: white;
 		opacity: 0.8;
 	}
+    .logo_classicChess p {
+        position: relative; 
+        top: -20%;
+    }
 	.logo_multiplayer_global {
 		background: url(../../img/multi_global.png);
 		background-size: 120px 120px;

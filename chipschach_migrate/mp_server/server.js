@@ -38,6 +38,7 @@ function Room() {
 	this.currentTurn = 1;
 	this.name = null;
 	this.id = -1;
+    this.full = false;
 }
 var rooms = []; //Store for the rooms
 exports.rooms = rooms;
@@ -113,29 +114,30 @@ function evaluate(connection, message) {
 			for(var i = 0; i < MAXROOMS; i++) {	//Search for an empty room
 				if(rooms[i].connection1 == null) { //Hey we got one, Yay
 					rooms[i].connection1 = connection;	//Hand over the connection to the latest room
-					rooms[i].name = m.name;
+					rooms[i].name = m.nameid;
 					rooms[i].connection1.sendUTF('{"type": "hello", "player": "1"}'); //Send a welcome to the new connection
 					rooms[i].game = new game.Game(i);  //Create a new game logic in the room
 					rooms[i].id = ID;
 					if(DEBUG)console.log("Server : ", '{"type": "hello", "player": "1"}');
-				break; //Nothing else to do, go and play!
-				} else {
+                    break; //Nothing else to do, go and play!
+				} else if(i==MAXROOMS-1){
 					connection.sendUTF('{"type": "exit", "msg": "No free Server Rooms!"}');
 				}
 			}
 		} else if(m.player == '2') {
 			for(var i = 0; i < MAXROOMS; i++) {
-				if(rooms[i].name == m.name && rooms[i].connection2 == null) { //Search for correct room
+				if(rooms[i].id == m.nameid && rooms[i].connection2 == null) { //Search for correct room
 					rooms[i].connection2 = connection;
 					rooms[i].connection2.sendUTF('{"type": "hello", "player": "2"}');
 					rooms[i].connection1.sendUTF('{"type": "enemy", "player": "2"}'); //Player 1 has to know his enemy
+                    rooms[i].full = true;
 					rooms[i].game.sendLevel(); //Send the Level to both players
 					rooms[i].game.sendDetails(); //Send some Level information
 					if(DEBUG)console.log("Server : ", '{"type": "hello", "player": "2"}');
 					if(DEBUG)console.log("Server : ", '{"type": "enemy", "player": "2"}');
 					break;
-				} else {
-					connection.sendUTF('{"type": "exit", "msg" : "There does not exist a Server with that name!"}');
+				} else if(i==MAXROOMS-1) {
+					connection.sendUTF('{"type": "exit", "msg" : "There does not exist a Server with that name or the server is full!"}');
 				}
 			}
 		}		
@@ -247,6 +249,7 @@ function endGame(connection) {
 		rooms[roomID].currentTurn = 1;
 		rooms[roomID].connection1 = null;
 		rooms[roomID].connection2 = null;
+        rooms[roomID].full = false;
 		rooms[roomID].game.clear();
 	}
 }

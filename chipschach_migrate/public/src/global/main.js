@@ -1,7 +1,8 @@
 //var URL = $("#address").val();
 var PORT = 3001;
 var MODUS = '';
-var NAME = '';
+var NAMEID = '';
+var LEVEL = '';
 
 var main = function() {
 //Start Game
@@ -21,12 +22,12 @@ if(MODUS == "create") {
 	$('#menu p').hide();
 	$('.spinner').show();
 	try {
-		connect("ws://"+$('#address').val()+":"+PORT, "1", NAME);
+		connect("ws://"+$('#address').val()+":"+PORT, "1", NAMEID, LEVEL);
 	} catch(e) {}
 } else if(MODUS == "join") {
 	$('#menu').hide();
 	try {
-		connect("ws://"+$('#address').val()+":"+PORT, "2", NAME);
+		connect("ws://"+$('#address').val()+":"+PORT, "2", NAMEID, LEVEL);
 	} catch(e) {}
 }
 
@@ -138,20 +139,24 @@ $(document).ready(function() {
 	//Getting the get parameter from the url
 	var query = window.location.search.substring(1);
 	var pairs = query.split('&');
-	if (pairs.length > 2 || pairs.length < 2) {
-		console.log("Please only two parameter!")
+	if (pairs.length > 3 || pairs.length < 3) {
+		console.log("Please only three parameter!")
 		return undefined;
 	}
 	//Split get parameter in key and value, e.g. level : sp_tower_1
 	var pair1 = pairs[0].split('=');
 	var pair2 = pairs[1].split('=');
-	if (pair1[0] == "modi" && pair2[0] == "name") {
-        if (pair1[1].length > 0 && pair2[1].length > 0)
+    var pair3 = pairs[2].split('=');
+    
+	if (pair1[0] == "modi" && pair2[0] == "name" && pair3[0] == 'level') {
+        if (pair1[1].length > 0 && pair2[1].length > 0 && pair3[1].length > 0) {
 			MODUS = pair1[1];
-			NAME = pair2[1];
+			NAMEID = decodeURIComponent(pair2[1]);
+            LEVEL = decodeURIComponent(pair3[1]);
             main();
+        }
 	} else {
-		console.log("Please enter at least one parameter!");
+		console.log("Please enter all three parameters!");
 		return undefined;
 	}   
 }); //Will be executed when the html file is loaded

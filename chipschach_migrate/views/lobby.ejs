@@ -4,8 +4,10 @@
   <meta charset="UTF-8">
   <script type="text/javascript" src="lib/jquery-1.11.3.js"></script>
   <script type="text/javascript" src="src/lobby/main.js"></script>
+  <script type="text/javascript" src="lib/toastr.js"></script>
   <link rel="stylesheet" type="text/css" href="lib/bootstrap.min.css" />
   <link rel="stylesheet" type="text/css" href="css/lobby/lobby.css" />
+  <link rel="stylesheet" href="lib/toastr.css"/>
   <title>Chipschach - Lobby</title>
 </head>
 <body>
@@ -13,7 +15,7 @@
     <div class="overlay"></div>
     
     <div id="logo_container">
-        <div class="logo"></div>
+        <a href="../menu"><div class="logo"></div></a>
     </div>
     
     <div class="table">
@@ -28,8 +30,35 @@
     </div>
     
      <div id="hint_container">
-        <p><span style="font-size:24px; text-decoration: underline">Tipp:</span> Here you can join a online multiplayer game!</p>
+        <p><span style="font-size:24px; text-decoration: underline">Tipp:</span> Hier kannst du einem online Spiel beitretem!</p>
     </div>
 <div>
+
+<!------------------Overlays-------------------->
+<div id="joinGame">
+    <h2>Trete einem Spiel bei!</h2>
+    <ul class="opengames">
+        <li>Spiel 1</li>
+        <li>Spiel 2</li>
+    </ul>
+    <button type="submit" class="btn btn-warning btn_back">zurück</button>
+</div>
+<div id="createGame">
+    <h2>Erstelle ein neues Online Spiel!</h2>
+    <form class="form-inline" role="form" onsubmit="return false;">
+        <label for="Spiel Name">Spiel Name</label> 
+                    <input type="text" class="form-control" id="name" required>
+                    
+        <label style="margin-top: 5px;" for="level">Levelauswahl</label> 
+                    <select class="form-control" id="level">
+                        <option value="minischach_debug.js" >Level Debug</option>
+                    </select>
+                    
+        <button class="btn btn-success" id="btn_start">Starte Spiel</button>
+    </form>
+                
+    <button type="submit" class="btn btn-warning btn_back">zurück</button>
+</div>
+
 </body>
 </html>

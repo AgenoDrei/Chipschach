@@ -4,7 +4,8 @@ var fs = require('fs');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
+  //res.render('index', { title: 'Express' }); TODO Optional LOGIN
+  res.redirect('menu');
 });
 
 router.get('/menu_data', function(req, res, next) {
@@ -19,7 +20,10 @@ router.get('/menu_data', function(req, res, next) {
 router.get('/level/:name', function(req, res, next) {
 	var levelTag = req.params.name;
 	var tags = levelTag.split("_");
-	console.log("Params: " + levelTag + ", Tags: " + tags);
+    if(tags[1] == undefined || tags[1] == null) {
+        res.send("Invalid filename!");
+        //return;
+    }
 	var filename = 'data/level/'+tags[0] + '/' + levelTag + '.js';
 	
 	fs.readFile(filename, 'utf8', function (err, data) {
@@ -27,6 +31,34 @@ router.get('/level/:name', function(req, res, next) {
 			res.send(data);
 		});
 	// res.end();
+});
+
+router.get('/level/category/:type', function(req, res, next) {
+	var type = req.params.type;
+	if(type != "editor" && type != "minischach" && type != "mp" && type != "mp_global" && type != "sp") {
+        res.send("Invalid type");
+        return;
+    }
+    
+	console.log("Server> Type " + type + " selected!");
+	var filepath = 'data/level/'+type;
+    //TODO
+    
+    fs.readdir(filepath, function(err, files) {
+        var response = [];
+        var count = 0;
+	
+        files.forEach(function(item) {
+                var obj = fs.readFileSync(filepath+"/"+item);
+                var content = ((obj.toString()).split("="))[1];
+                var jsonContent = JSON.stringify(eval("(" + content + ")"))
+                var name = (JSON.parse(jsonContent)).name;
+                console.log(name);
+                response[count] = {"name" : name, "filename" : item, "id" : count};
+                count++;
+        });
+        res.json(response);
+    });
 });
 
 router.post('/level/newLevel', function(req, res, next) {
@@ -77,8 +109,10 @@ router.get('/global/getRooms', function(req, res, next) {
 	var count = 0;
 	
 	obj.forEach(function(item) {
-		response[count] = {"name: " : item.name, "id" : item.id};
-		count++;
+        if(!item.full) {
+            response[count] = {"name" : item.name, "id" : item.id};
+            count++;
+        }
 	});
 	res.json(response);
 });

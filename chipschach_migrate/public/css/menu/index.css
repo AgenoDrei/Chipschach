@@ -7,41 +7,41 @@ body {
 		"Lucida Grande", sans-serif;
 	font-size: 170%;
 }
-	#body-container {
-		z-index: 10;
-	}
-	#errorInfo {
-		position: absolute;
-		left: 0; right: 0;
-		margin: 150px auto;
-		width: 500px;
-		height: 500px;
-		text-align: center;
-		
-		display: none;
-	}
 
-.centered {
-	position: absolute;
-	left: 0px;
-	right: 0px;
-	margin: 0px auto;
+#body-container {
+		width: 400px;
+        height: 500px;
+		margin: auto;
+		position: absolute;
+		right: 0; left: 0;
+		top: 0; bottom: 0;
 }
 
-#logo_center {
-	height: 30%;
-	top: 5%;
+#logo_container {
+    height: 180px;
+    width: 180px;
+    margin: 10px auto;
+}
+
+.logo {
+		background: url(../../img/logo_large.png);
+		background-size: 170px 190px;
+		background-repeat: no-repeat;
+		background-position: center;
+        width: 180px;
+        height: 180px;
 }
 #userdata {		/*id for table ...*/
-	display: table;	
-	top: 35%;
+    width: 350px;
+    margin: 10px auto;
 }
-	.userdata {
-	    display: table-cell;
-	    vertical-align: middle;
-	}
-	.userdata button {
+
+#userdata button {
 		display: block;
 		margin: 0 auto;
 		width: 350px;
-	}
+}
+
+#userdata p {
+    font-weight: bold;
+}
