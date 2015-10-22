@@ -1,0 +1,165 @@
+body {
+	background-color: grey;
+	background: url(../../img/muster.png);
+	color: #333366;
+	font-family: "Arial Rounded MT Bold", "HelveticaNeue-Light",
+		"Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial,
+		"Lucida Grande", sans-serif;
+	padding: 0 0 0 0;
+	margin: 0;
+}
+
+a:active, a:focus{
+	ie-dummy: expression(this.hideFocus=true);
+	outline: none;
+}
+
+h2 {
+    color: #ED9C28;
+}
+
+#body-container {
+		width: 800px;
+		height: 600px;
+		margin: auto;
+		position: absolute;
+		right: 0; left: 0;
+		top: -10%; bottom: 0;
+        background-color: rgba(150,150,150,0.6);
+        border-radius: 20px;
+        box-shadow: 0px 0px 25px rgba(0,0,100,0.5);
+}
+
+#logo_container {
+    height: 180px;
+    width: 180px;
+    margin: 10px auto;
+}
+
+.logo {
+		background: url(../../img/logo_large.png);
+		background-size: 170px 190px;
+		background-repeat: no-repeat;
+		background-position: center;
+        width: 180px;
+        height: 180px;
+}
+
+#hint_container {
+    height: 180px;
+    margin: 10px auto;
+}
+
+#hint_container p {
+    color: darkgreen;
+    font-size: 24px;
+    font-weight: bolder;
+    text-align: center;
+}
+
+/************Table Elements****************/
+.table {
+	display: table;
+	margin: 0px -80px 0;
+	border-spacing: 45px 10px;
+	min-width: 960px;
+	width: 70%;
+}
+.row {
+	display: table-row;
+}
+.cell {
+	display: table-cell;
+	text-align: center;
+	vertical-align: middle;
+	border-radius: 150px;
+	width: 275px;
+	height: 275px;
+	font-weight: bold;
+	font-size: 28px;
+	line-height: 1.1;
+	//display: none;
+	cursor: pointer;
+}
+
+.cell:hover {
+    box-shadow: 0px 0px 15px darkblue;
+}
+
+.join {
+		background-color: white;
+		opacity: 0.8;
+}
+    
+.create {
+		background-color: white;
+		opacity: 0.8;
+}
+
+/************OVERLAYS**********************/
+.overlay {
+		position: fixed;
+		top: 0;
+		left: 0;
+		height: 100%;
+		width: 100%;
+		background: rgba(0,0,0, 0.4);
+		z-index: 10;
+		display: none;
+}
+
+#joinGame {
+	position: absolute;
+	top: 100px;
+	left: 0;
+	right: 0;
+	margin: 0 auto;
+	width: 400px;
+	background-color: white;
+	border-radius: 5px;
+	padding: 10px;
+	display: none;
+    z-index: 999;
+}
+
+#joinGame .opengames {
+    padding: 0;
+}
+
+#joinGame .opengames li {
+    list-style-type: none;
+    background-color: #5BC0DE;
+    border-radius: 5px;
+    margin: 5px;
+    text-align: center;
+}
+#joinGame .opengames a {
+    text-decoration: none;
+    color: #333366;
+    font-weight: bold;
+}
+
+#createGame {
+	position: absolute;
+	top: 100px;
+	left: 0;
+	right: 0;
+	margin: 0 auto;
+	width: 400px;
+	background-color: white;
+	border-radius: 5px;
+	padding: 10px;
+	display: none;
+    z-index: 999;
+}
+
+.btn_back {
+    float: right;
+    margin-top: 20px;
+}
+
+#btn_start {
+    font-weight: bolder;
+    float: left;
+    margin-top: 20px;
+}
