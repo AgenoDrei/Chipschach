@@ -10,7 +10,7 @@ router.get('/', function(req, res, next) {
 
 router.get('/menu_data', function(req, res, next) {
 	var obj;
-	fs.readFile('data/data.json', 'utf8', function (err, data) {
+	fs.readFile('./data/data.json', 'utf8', function (err, data) {
 		if (err) throw err;
 			obj = JSON.parse(data);
 			res.json(obj);
