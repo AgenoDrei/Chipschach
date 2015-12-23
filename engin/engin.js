@@ -1,14 +1,18 @@
 Engin = {
   WIDTH : -1,
   HEIGHT : -1,
+  MAX_HEIGHT: 640,
+  MAX_WIDTH: 640,
   DEBUG : true,
+
+  board :
 
   parent : null,
   canvasHandler : CanvasHandler,
 
   init : function(width, height, container) {
-    Engin.WIDTH = width;
-    Engin.HEIGHT = height;
+    Engin.WIDTH = (width<=Engin.MAX_WIDTH) ? width : Engin.MAX_WIDTH;
+    Engin.HEIGHT = (height <= Engin.MAX_HEIGHT) ? height : Engin.MAX_HEIGHT;
 
     if(container[0] != undefined || cotainer[0] != null)
       container = container[0];
@@ -22,7 +26,6 @@ Engin = {
     Engin.parent.style.width = Engin.WIDTH;
     Engin.parent.style.padding = "0px";
     Engin.parent.style.border = "0px";
-    Engin.parent.style.background = "rgba(0,0,0,0.2)";
 
     CanvasHandler.createCanvas(Engin.parent, Engin.WIDTH, Engin.HEIGHT);
     CanvasHandler.loadAssets("assest");

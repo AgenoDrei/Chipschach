@@ -1,5 +1,5 @@
 var main = function() {
-  Engin.init(600,600, $("#canvasContainer"));
+  Engin.init(640,640, $("#canvasContainer"));
 };
 
 $(document).ready(main);
