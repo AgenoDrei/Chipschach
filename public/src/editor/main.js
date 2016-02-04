@@ -1,5 +1,4 @@
 var level;
-var HOST = 'localhost';
 var main = function() {
 //init
 	for (var x = 0; x < 8; x++) { // 64 divs in cr-stage erstellen
@@ -95,9 +94,6 @@ var main = function() {
 					level.win = $('#mini_win').val();
 					break;
 			}
-			//alternative switch HOST to $('#adress').val()
-			var adress = 'ws://' + HOST + ':1765';
-			console.log(JSON.stringify(level));
 			
 			$.post( "level/newLevel", level, function( data ) {
 				console.log("Posted level sucessfull to the server!");

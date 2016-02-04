@@ -1,7 +1,7 @@
 body {
 	height: 100%;
 	background-color: grey;
-	background: url(../../../img/muster.png);
+	background: url(../../../img/muster2.png);
 	font-family: "Arial Rounded MT Bold", "HelveticaNeue-Light",
 		"Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial,
 		"Lucida Grande", sans-serif;
@@ -115,7 +115,122 @@ a:active, a:focus{
 			height: 35px;
 	}
 	
+	/* Chat */
+        #background{
+            		left: 250px;
+			z-index: 100;
+			background:#4f6aff;
+            background-image: URl(../../../img/chatbg.png);
+            background-repeat: repeat-x;
+                border-radius: 5px;
+			border-radius: 5px;	
+            padding: 10px;
+			width:400px; 
+			height:430px;
+			display: none;
+			position: absolute;
+			top: 200px;
+            box-shadow: 0 0 10px 5px #000000;
 
+		}
+		
+		#message_field{
+			background:#FFFFFF;
+            		border: 2px inset #FFFFFF;
+            		color: #001CB2;
+           		border-radius: 5px;
+			display: none;
+			z-index: 101;
+			overflow:auto;
+			display: none;
+            		padding: 10px;
+			width:380px; 
+			height:320px;
+			margin-left:0px;
+			margin-top: 0px;
+		}
+
+#message_field p {
+    margin: 0;
+    margin-top: 4px;
+    padding: 0;
+    font-weight: bold;
+}
+		
+		#xButton{
+			position:absolute;
+			right: 12px;
+            top: 12px;
+			z-index:102;
+			display:none;
+			}
+			
+			
+		#icon{
+			display:none;
+            float:left;
+            width: 70px;
+            vertical-align: center;
+            padding: 20px;
+			}
+					
+		
+		#xButton1{
+			display:none;
+            float:left;
+            width: 70px;
+            vertical-align: center;
+            padding: 20px;
+		}
+		
+		.pic_table{
+            float: left;
+            height: 80px;
+            width: 310px;
+            margin: 0;
+            padding: 7px;
+            display: none;
+    border-left: 2px #808080 solid;
+    border-right: 2px #808080 solid;
+			
+		}
+		
+		#inputfield{
+            margin: 0;
+            margin-top: 10px;
+            padding: 0;
+            background-color: #cccccc;
+            height: 80px;
+            border-radius: 5px;     
+			
+		}
+
+#inputfield textarea {
+    background-color: transparent;
+    padding: 7px;
+    border: none;
+    width: 220px;
+    border-left: 2px #808080 solid;
+    border-right: 2px #808080 solid;
+    height: 80px;
+    display: inline-block;
+    float: left;
+    font-weight: bold;
+    color: #808080;
+    resize:none;
+}
+
+#inputfield button {
+    background-color: transparent;
+    border: none;
+    color: #808080;
+    font-weight: bold;
+    text-align: center;
+    width: 90px;
+    height: 80px;
+}
+		
+		
 	#profile-container2 {
 		position: absolute;
 		bottom: 20px;
@@ -159,7 +274,7 @@ a:active, a:focus{
 	}
 
 
-#board-container {
+#board-container { 
 	position: absolute;
 	margin: auto;
 	left: 0; right: 0;
