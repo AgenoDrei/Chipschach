@@ -1,9 +1,10 @@
 //var URL = $("#address").val();
-var PORT = 3001;
-var HOST = 'ws://localhost:'+PORT;
+var PORT = 4001;
+var HOST = 'ws://92.51.145.35:'+PORT;
 var MODUS = '';
 var NAMEID = '';
 var LEVEL = '';
+var playerID= null;
 
 var main = function() {
 //Start Game
@@ -24,11 +25,13 @@ if(MODUS == "create") {
 	$('.spinner').show();
 	try {
 		connect(HOST, "1", NAMEID, LEVEL);
+		playerID= 1;
 	} catch(e) {}
 } else if(MODUS == "join") {
 	$('#menu').hide();
 	try {
 		connect(HOST, "2", NAMEID, LEVEL);
+		playerID= 2;
 	} catch(e) {}
 }
 
@@ -173,3 +176,75 @@ function adjustScreen(event) {
 		$('#btn_menu').show();
 	}
 }
+
+function showChatfield(){ //open chatfield
+$('#chat').show();
+$('#new_m').hide();
+$('#background').show();
+$('#xButton').show();
+$('#icon').show();
+$('#message_field').show();
+}
+function closeField(){ //close chatfield
+$('.pic_table').hide();
+$('#chat').show();
+$('#new_m').hide();
+$('#background').hide();
+$('#xButton').hide();
+$('#icon').hide();
+$('#message_field').hide();
+$('#xButton1').hide();
+}
+function openSymbolfield(){	//open Smilys
+
+$('#icon').hide();
+$('#chatfield').hide();
+$('#sendmsg').hide();
+$('.symbols').show();
+$('.pic_table').show();
+$('#xButton1').show();
+}
+function closeSymbolfield(){//close Smilys
+$('#icon').show();
+$('#chatfield').show();
+$('#sendmsg').show();
+$('.symbols').hide();
+$('.pic_table').hide();
+$('#xButton1').hide();
+}
+function sendPic(i){		//sends server that the picture has been clicked
+		var username= getCookie("Name");
+		send('{"type": "picture", "playerId": "'+playerID+'","player":"'+username+'", "number":"'+i+'"}');
+	}
+function sendM(){			//sends server that there's a message to send
+	var username= getCookie("Name");
+	var me= $("textarea").val();
+	if (me==""){
+	}else
+	send('{"type": "message", "player": "'+username+'", "playerId":"'+playerID+'", "textmessage":"'+me+'"}');
+	$("textarea").val("");
+}
+
+function disableEnterKey(e) //enter must not be used in the chat..otherwise it won't work
+{
+     var key;
+     if(window.event)
+          key = window.event.keyCode;    
+     else
+          key = e.which;
+     if(key == 13)
+          return false;
+     else
+          return true;
+}
+
+function getCookie(cname) {
+    var name = cname + "=";
+    var ca = document.cookie.split(';');
+    for(var i=0; i<ca.length; i++) {
+        var c = ca[i];
+        while (c.charAt(0)==' ') c = c.substring(1);
+        if (c.indexOf(name) == 0) return c.substring(name.length,c.length);
+    }
+    return "";
+} 

@@ -8,9 +8,14 @@ router.get('/', function(req, res, next) {
   res.redirect('menu');
 });
 
+// auf der Login Seite die später mal kommt müssen die drei eingebaut werden:
+//				res.cookie('Name',user.userName); 	//creates a new Cookie; value= userName
+//				res.cookie('Pic',user.profilepic); 	//creates a new Cookie; value= Profilepicture
+//				res.cookie('Group',user.group); 	//creates a new Cookie; value= usergroup
+
 router.get('/menu_data', function(req, res, next) {
 	var obj;
-	fs.readFile('./data/data.json', 'utf8', function (err, data) {
+	fs.readFile('data/data.json', 'utf8', function (err, data) {
 		if (err) throw err;
 			obj = JSON.parse(data);
 			res.json(obj);

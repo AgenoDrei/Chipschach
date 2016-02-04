@@ -15,7 +15,9 @@ connection = new WebSocket(host, ["kekse"]); //create new Connection
 	connection.onopen = function(e) {
 		console.log("WebSocket: Connection established");
         level = levelName;
-		send('{"type": "hello", "player": "'+player+'", "nameid": "'+nameid+'"}');
+		var user_name = getCookie("Name");
+		var user_pic = getCookie("Pic");
+		send('{"type": "hello", "player": "'+player+'", "nameid": "'+nameid+'", "user":"'+user_name+'", "profpic":"'+user_pic+'"}');
 	}
 	
 	//when a connection is closed
@@ -47,25 +49,40 @@ connection = new WebSocket(host, ["kekse"]); //create new Connection
 		switch(m.type) {
 		case 'hello':
 			if(m.player == '1') { //if the servers decides you are player 1...
+				var user_name = getCookie("Name");
+				var user_pic=getCookie("Pic");
 				$('#btn_mp_start').hide();
 				$('#btn_difficulty').hide();
 				$('#menu p').hide();
 				$('.spinner').show();
+				//$('#Username_1').append(user_name);
+				//$('#pic_1').append("<img src='../profilepics/" + user_pic + ".jpg'>");
 				send('{"type": "setGameProperties", "difficulty" : "' + Game.difficulty + '", "name" : "'+level+'"}'); //you can select the level
 				Game.playerTurn = 'yellow';
 			} else { //or player 2
+				var user_name = getCookie("Name");
+				var user_pic=getCookie("Pic");
 				$('#menu').hide();
 				Game.playerTurn = 'blue';
 				Game.turn = false;
 				$('#attributes').hide();
 				$('#profile-container2').show();
+				$('#Username_2').append(user_name);
+				$('#Username_1').append(m.enemy);
+				//$('#pic_2').append("<img src='../profilepics/" + user_pic + ".jpg'>");
+				//$('#pic_1').append("<img src='../profilepics/" + m.profpic + ".jpg'>");
+				$('#chat').show();
+
 			}
 			break;
-		case 'enemy': //player 1 get the message that a enemy is online
+		case 'enemy': //player 1 gets the message that a enemy is online
 			$('#menu').hide();
 			$('.spinner').hide();
 			$('#attributes').hide();
 			$('#profile-container2').show();
+			//$('#Username_2').append(m.user);
+			$('#chat').show();
+			//$('#pic_2').append("<img src='../profilepics/" + m.profpic2 + ".jpg'>");
 			break;
 		case 'lvl': //used to create the level on the board, figures are served by the server
 			Game.createFigure(m.x, m.y, m.figure, m.color);
@@ -111,6 +128,55 @@ connection = new WebSocket(host, ["kekse"]); //create new Connection
 			Crafty.scene('Win'); //switch to the winning scene
 			
 			break;
+		case 'picture':
+		
+			if(m.playerId == '1'){
+			//$('#message_field').append('<p>' + m.player + ':');
+			$('#chat').hide();
+			$('#new_m').show();
+			$('#message_field').append("<p> Gegner :");
+			
+			}
+			else if(m.playerId == '0'){
+			$('#message_field').append("<p> Du :");
+			}
+			switch (m.number){// what picture has been clicked; append to messagefield
+			case '0':
+			$('#message_field').append(" <div id='picture0'> <img src='../../img/BishopBlue.png' style='width:40px; height:40px;'> </div> <br> </p>");
+			break;
+			case '1':
+			$('#message_field').append(" <div id='picture1'> <img src='../../img/PawnBlue.png' style='width:40px; height:40px;'> </div> <br></p>");
+			break;
+			case '2':
+			$('#message_field').append(" <div id='picture2'> <img src='../../img/TowerBlue.png' style='width:40px; height:40px;'> </div> <br></p>");
+			break;
+			case '3':
+			$('#message_field').append(" <div id='picture3'> <img src='../../img/KingBlue.png' style='width:40px; height:40px;'> </div> <br></p>");
+			break;
+			case '4':
+			$('#message_field').append(" <div id='picture4'> <img src='../../img/QueenBlue.png' style='width:40px; height:40px;'> </div> <br></p>");
+			break;
+			case '5':
+			$('#message_field').append(" <div id='picture5'> <img src='../../img/KnightBlue.png' style='width:40px; height:40px;'> </div> <br></p>");
+			break;
+			}
+			break;
+			
+		case 'message':
+		
+			if(m.playerId == '0'){// in case you sent the picture show: "Du", else the Username is shown
+			$('#message_field').append("<p> Du :");
+			}
+			 else if (m.playerId =='1'){
+				//$('#message_field').append('<p>' + m.player + ':');
+				$('#chat').hide();
+				$('#new_m').show();
+				
+				$('#message_field').append("<p> Gegner :");
+			}
+	
+			$('#message_field').append(m.textmessage); // append the message to the messagefield
+		break;
 		}
 		
 		console.log("Server> ",e.data);
@@ -135,3 +201,14 @@ function convertPlayer(player) {
 	else if(player == 2)
 		return 'blue';
 }
+
+function getCookie(cname) {
+    var name = cname + "=";
+    var ca = document.cookie.split(';');
+    for(var i=0; i<ca.length; i++) {
+        var c = ca[i];
+        while (c.charAt(0)==' ') c = c.substring(1);
+        if (c.indexOf(name) == 0) return c.substring(name.length,c.length);
+    }
+    return "";
+} 

@@ -11,12 +11,13 @@ var server = http.createServer(function(req, res) {
 });
 
 //Constants
-var PORT = (process.env.VCAP_APP_PORT || 3001);		//Server-Port
+var PORT = 4001		//Server-Port
 var ADDRESS = '0.0.0.0'	//Server-Address
 var MAXROOMS = 5;  		//Amount of open server rooms
 var DEBUG = true;
 var ID = 42 - 1; //Because ... reasons
-
+var player_1;
+var picture_1;
 server.listen(PORT, function() { //start http server
 	console.log("Server bound to port " + PORT);
 	// require('dns').lookup(require('os').hostname(), function (err, add, fam) { //get the ip address
@@ -39,6 +40,8 @@ function Room() {
 	this.name = null;
 	this.id = -1;
     this.full = false;
+	this.player1="";
+	this.picture1= null;
 }
 var rooms = []; //Store for the rooms
 exports.rooms = rooms;
@@ -82,16 +85,19 @@ function evaluate(connection, message) {
 		connection.sendUTF('{"type": "error", "message": "json"}'); //No valid string 
 		return;
 	}
-	
 	if(m.type == "hello") {
 		if(m.player == '1') {
 			for(var i = 0; i < MAXROOMS; i++) {	//Search for an empty room
 				if(rooms[i].connection1 == null) { //Hey we got one, Yay
 					rooms[i].connection1 = connection;	//Hand over the connection to the latest room
 					rooms[i].name = m.nameid;
+					rooms[i].player1= m.user;
+					rooms[i].picture1= m.profpic;
 					rooms[i].connection1.sendUTF('{"type": "hello", "player": "1"}'); //Send a welcome to the new connection
 					rooms[i].game = new game.Game(i);  //Create a new game logic in the room
 					rooms[i].id = ID;
+					player_1=rooms[i].player1;
+					picture_1 = rooms[i].picture1;
 					if(DEBUG)console.log("Server : ", '{"type": "hello", "player": "1"}');
                     break; //Nothing else to do, go and play!
 				} else if(i==MAXROOMS-1){
@@ -102,8 +108,8 @@ function evaluate(connection, message) {
 			for(var i = 0; i < MAXROOMS; i++) {
 				if(rooms[i].id == m.nameid && rooms[i].connection2 == null) { //Search for correct room
 					rooms[i].connection2 = connection;
-					rooms[i].connection2.sendUTF('{"type": "hello", "player": "2"}');
-					rooms[i].connection1.sendUTF('{"type": "enemy", "player": "2"}'); //Player 1 has to know his enemy
+					rooms[i].connection2.sendUTF('{"type": "hello", "player": "2", "enemy": "'+player_1+'","profpic": "'+picture_1+'"}');
+					rooms[i].connection1.sendUTF('{"type": "enemy", "player": "2", "user":"'+m.user+'","profpic2":"'+m.profpic+'"}'); //Player 1 has to know his enemy
                     rooms[i].full = true;
 					rooms[i].game.sendLevel(); //Send the Level to both players
 					rooms[i].game.sendDetails(); //Send some Level information
@@ -145,7 +151,28 @@ function evaluate(connection, message) {
 		case 'yield':
 			rooms[roomID].game.yield(convertPlayer(rooms[roomID].currentTurn));
 			break;
-		default: //Not used in the protocol
+		case "picture": // sends picnumber to clients
+				if(m.playerId == '1'){
+				rooms[roomID].connection1.sendUTF('{ "type": "picture",  "playerId": "0", "number": "'+m.number+'"}');
+				rooms[roomID].connection2.sendUTF('{ "type": "picture", "player": "'+m.player+'","playerId": "1","number": "'+m.number+'"}');
+				}else if(m.playerId == '2'){
+				rooms[roomID].connection1.sendUTF('{ "type": "picture", "player": "'+m.player+'","playerId": "1","number": "'+m.number+'"}');
+				rooms[roomID].connection2.sendUTF('{ "type": "picture", "playerId": "0", "number": "'+m.number+'"}');
+				}
+			break;
+		case "message":	//sends message to clients
+				if(m.playerId == '1'){
+				rooms[roomID].connection1.sendUTF('{ "type": "message", "playerId": "0", "textmessage": "'+m.textmessage+'"}');
+				rooms[roomID].connection2.sendUTF('{ "type": "message", "player": "'+m.player+'","playerId": "1", "textmessage": "'+m.textmessage+'"}');
+				}else if(m.playerId == '2'){
+				rooms[roomID].connection1.sendUTF('{ "type": "message", "player": "'+m.player+'","playerId": "1", "textmessage": "'+m.textmessage+'"}');
+				rooms[roomID].connection2.sendUTF('{ "type": "message", "playerId": "0","textmessage": "'+m.textmessage+'"}');
+				}
+				break;
+		case "login":
+			console.log(m.name + 'hat sich eingeloggt');
+			break;
+			default: //Not used in the protocol
 			connection.sendUTF('{"type": "error", "message": "cmd"}');
 			break;
 		}
@@ -195,7 +222,7 @@ function respond(connection, m, gameState, roomID) {
 		// Turn forbidden, no valid turn
 		connection.sendUTF('{"type": "error", "message": "impossible"}');
 		break;
-	}
+	} 
 }
 
 /*
@@ -227,12 +254,13 @@ function endGame(connection) {
         rooms[roomID].name = null;
         rooms[roomID].id = -1;
         rooms[roomID].currentTurn = 1;
+		rooms[roomID].player1="";
 		rooms[roomID].game.clear();
 	}
 }
 
 /*
- * only important for the game logic, sends messsage to both player in the affected room
+ * only important for the game logic & chat, sends messsage to both player in the affected room
  */
 exports.sendToPlayers = function(text, i) {
 	rooms[i].connection1.sendUTF(text);
