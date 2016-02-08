@@ -58,7 +58,7 @@ Crafty.c('Figure', {
 Crafty.c('PlayerFigure', {
 	init : function() {
 		this.requires('Figure, Color');
-		this.color('rgba(0, 255, 0, 0.0)'); //Can be colored if wanted
+		this.color('rgba(255, 0, 0, 0.01)'); //Can be colored if wanted
 
 		this.bind('setColor', function(data) { //Trigger to color a special field
 			if (this.x == Math.round(data.x * Game.map_grid.tile.width) && this.y == Math.round(data.y * Game.map_grid.tile.width)) {

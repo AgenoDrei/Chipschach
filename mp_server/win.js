@@ -49,21 +49,22 @@ var win = function win(gameRef) {
 	 */
 	
 	this.isWin = function(id, player, gameRef) { //Referenzen auf das WinObjekt und das GameObjekt
+		debugger;
 		switch (id) {
-		case 0:
+		case 0: case "0":
 			isChipsWin(player, that, gameRef);
 			break;
-		case 1:
+		case 1: case "1":
 			isFiguresWin(player, that, gameRef);
 			break;
-		case 2:
+		case 2: case "2":
 			isChipsWin(player, that, gameRef);
 			isFiguresWin(player, that, gameRef);
 			break;
-		case 3: 
+		case 3: case "3":
 			isCheckmate(gameRef.getEnemy(), that, gameRef);
 			break;
-		case 10:
+		case 10: case "10":
 			isFiguresWin(player, that, gameRef);
 			isFigureOnField([{x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0},{x:4,y:0},{x:5,y:0},{x:6,y:0},{x:7,y:0}], 'Pawn', player, that, gameRef);
 			break;

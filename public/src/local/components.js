@@ -66,7 +66,7 @@ Crafty.c('Figure', {
 Crafty.c('PlayerFigure', {
 	init : function() {
 		this.requires('Figure');
-		this.color('rgba(0, 255, 0, 0.0)'); //Can be colored if wanted
+		this.color('rgba(0, 255, 0, 0.01)'); //Can be colored if wanted
 
  
 		this.bind('setColor', function(data) {	//Trigger to color a special field

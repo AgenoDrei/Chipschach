@@ -115,13 +115,7 @@ function main() {
 	
 	$('.logo_multiplayer_global').click(function() { // Editor anzeigen
 		if (!oneIsActive) {
-			$('#multiplayer_global').css("z-index", 100);
-			$("#overlay").fadeIn(400);
-			oneIsActive = true;
-			$(this).fadeTo("slow", 0.5);
-			setTimeout(function() {
-				$('#multiplayer_global').show();
-			}, 500);
+			window.location.href = "lobby";
 		}
 	});
 		$('#btn_mp_g_continue').click(function() {

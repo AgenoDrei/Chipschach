@@ -1,1 +1,1 @@
-Level = {"type":"lvl","board":{"0":{"type":"Chip","color":"Blue","x":"5","y":"0"},"1":{"type":"Queen","color":"Yellow","x":"0","y":"7"}},"name":"queen_1_1","description":"Finde den schnellsten Weg zum Chip!","win":0,"filename":"edit_sp_queen_1_","min_turns":"2"}
+Level = {"type":"lvl","board":{"0":{"type":"Chip","color":"Blue","x":"5","y":"0"},"1":{"type":"Queen","color":"Yellow","x":"0","y":"7"}},"name":"Einzelspieler - Dame - Level 1.1","description":"Finde den schnellsten Weg zum Chip!","win":0,"filename":"edit_sp_queen_1_","min_turns":"2"}

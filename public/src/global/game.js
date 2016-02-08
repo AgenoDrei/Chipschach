@@ -35,8 +35,7 @@ Game = {
 	 * Initialize and start our game
 	 */
 	start : function() {
-		Crafty.init(560, 560);
-		Crafty.canvas.init();
+		Crafty.init(560, 560, document.getElementById('cr-stage'));
 		Crafty.scene("Load"); //Switch to the first game scene
 
 	},

@@ -118,7 +118,7 @@ a:active, a:focus{
 	/* Chat */
         #background{
             		left: 250px;
-			z-index: 100;
+			z-index: 999;
 			background:#4f6aff;
             background-image: URl(../../../img/chatbg.png);
             background-repeat: repeat-x;
