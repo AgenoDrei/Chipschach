@@ -1,1 +1,1 @@
-Level = {"type":"lvl","board":{"0":{"type":"Knight","color":"Yellow","x":"0","y":"7"},"1":{"type":"Chip","color":"Blue","x":"7","y":"0"}},"name":"knight_1_1","description":"Schlage auf dem schnellsten Weg den Chip!","win":0,"filename":"edit_sp_knight_1_1","min_turns":"6"}
+Level = {"type":"lvl","board":{"0":{"type":"Knight","color":"Yellow","x":"0","y":"7"},"1":{"type":"Chip","color":"Blue","x":"7","y":"0"}},"name":"Einzelspieler - Springer - Level 1.1","description":"Schlage auf dem schnellsten Weg den Chip!","win":0,"filename":"edit_sp_knight_1_1","min_turns":"6"}

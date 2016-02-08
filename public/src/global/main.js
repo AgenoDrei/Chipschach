@@ -23,16 +23,10 @@ if(MODUS == "create") {
 	$('#btn_difficulty').hide();
 	$('#menu p').hide();
 	$('.spinner').show();
-	try {
-		connect(HOST, "1", NAMEID, LEVEL);
-		playerID= 1;
-	} catch(e) {}
+	playerID= 1;
 } else if(MODUS == "join") {
 	$('#menu').hide();
-	try {
-		connect(HOST, "2", NAMEID, LEVEL);
-		playerID= 2;
-	} catch(e) {}
+	playerID= 2;
 }
 
 //relevant for menu Button
@@ -48,7 +42,8 @@ $('#btn_menu').click(function(e) {
 	}
 });
 
-	// Start a Multiplayer Game and connect to Server
+	// Start a Multiplayer Game and connect to Server !!!OUTDATED!!!!
+	/*
 	$('#btn_mp_start').click(function(e) { 
 		e.preventDefault();
 		//$('#menu').hide();
@@ -69,7 +64,7 @@ $('#btn_menu').click(function(e) {
 		} catch(e) {
 			//Crafty.stop();
 		}
-	});
+	});*/
 	
 	/*
 	 * Wont happen the button is disabled, but maybe you will change that
@@ -114,7 +109,7 @@ $('#btn_menu').click(function(e) {
 	});*/
 
 	$('#close').click(function() { // Back to menu
-		window.location.href = "menu";
+		window.location.href = "lobby";
 	});
 	
 	//Blending out the help at start

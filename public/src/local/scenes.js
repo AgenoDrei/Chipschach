@@ -4,35 +4,33 @@
  * 	Game: Instigates the game and prepares all important variables, makes the mouse useable
  * 	Win: Stops the game and shows the winning screen 
  */
+
+var assetsObj = {
+        "audio" : {
+                "buzz" : "../../audio/Buzz.mp3",
+                "check" : "../../audio/Check.wav"
+        },
+        "sprites" : {
+                "../../img/spritemap.png" : {
+                        "tile" : Game.map_grid.tile.width,
+                        "tileh" : Game.map_grid.tile.height,
+                        "map" : { "SprTowerBlue" : [ 0, 0 ], "SprTowerYellow" : [ 1, 0 ],
+                                "SprChipYellow" : [ 2, 0 ], "SprChipBlue" : [ 3, 0 ], "SprChipRed" : [ 4, 0 ], "SprChipGreen" : [ 5, 0 ],
+                                "SprPawnBlue" : [ 6, 0 ], "SprPawnYellow" : [ 7, 0 ],
+                                "SprQueenBlue" : [ 8, 0 ], "SprQueenYellow" : [ 9, 0 ],
+                                "SprKingBlue" : [ 10, 0 ], "SprKingYellow" : [ 11, 0 ],
+                                "SprBishopBlue" : [ 12, 0 ], "SprBishopYellow" : [ 13, 0 ],
+                                "SprKnightBlue" : [ 14, 0 ], "SprKnightYellow" : [ 15, 0 ] }
+                }
+        }
+}
+
+
 Crafty.scene('Initiate', function() {
 	// Load all files
-	Crafty.load([ '../img/spritemap.png' ], function() {
-		console.log('DEBUG> Initating!');
-		// Slices the spritemap and the different sprites
-		Crafty.sprite(Game.map_grid.tile.width, '../img/spritemap.png', {
-			SprTowerBlue : [ 0, 0 ],
-			SprTowerYellow : [ 1, 0 ],
-			SprChipYellow : [ 2, 0 ],
-			SprChipBlue : [ 3, 0 ],
-			SprChipRed : [ 4, 0 ],
-			SprChipGreen : [ 5, 0 ],
-			SprPawnBlue : [ 6, 0 ],
-			SprPawnYellow : [ 7, 0 ],
-			SprQueenBlue : [ 8, 0 ],
-			SprQueenYellow : [ 9, 0 ],
-			SprKingBlue : [ 10, 0 ],
-			SprKingYellow : [ 11, 0 ],
-			SprBishopBlue : [ 12, 0 ],
-			SprBishopYellow : [ 13, 0 ],
-			SprKnightBlue : [ 14, 0 ],
-			SprKnightYellow : [ 15, 0 ]
-		});
-
-		// Declare the audio sounds
-		Crafty.audio.add('buzz', [ '../audio/Buzz.mp3' ]);
-		Crafty.audio.add('check', [ '../audio/Check.wav' ]);
-
-		console.log('DEBUG> Sprites loaded!')
+	 Crafty.load(assetsObj, function() {
+                console.log('DEBUG> Initating!');
+                console.log('DEBUG> Sprites loaded!')
 
 		initMouse(); // Instigates the mouse
 
@@ -160,5 +158,5 @@ function initMouse() {
 		}
 	});
 
-	Crafty.addEvent(Game.mouse, Crafty.stage.elem, "mousedown", Game.mouse.onMouseDown);
+	//Crafty.addEvent(Game.mouse, Crafty.stage.elem, "mousedown", Game.mouse.onMouseDown);
 }

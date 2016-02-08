@@ -53,8 +53,7 @@ Game = {
 	// Initialize and start our game
 	start : function() {
 		// Start crafty
-		Crafty.init(560, 560);
-		Crafty.canvas.init();
+		Crafty.init(560, 560, document.getElementById('cr-stage'));
 		Crafty.scene('Initiate');	//Switch to "Initiate" scene
 	},
 
@@ -307,7 +306,7 @@ Game = {
 			Crafty.trigger('setColor', {
 				x : x,
 				y : y,
-				color : 'rgba(0,255,0,0)'
+				color : 'rgba(0,255,0,0.01)'
 			});
 		}
 	},

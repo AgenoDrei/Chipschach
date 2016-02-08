@@ -47,6 +47,7 @@ router.get('/level/category/:type', function(req, res, next) {
     
 	console.log("Server> Type " + type + " selected!");
 	var filepath = 'data/level/'+type;
+	console.log("Server> Using path " + filepath); 
     //TODO
     
     fs.readdir(filepath, function(err, files) {
