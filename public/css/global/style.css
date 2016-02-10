@@ -303,8 +303,8 @@ a:active, a:focus{
 		left: 0; top: 0;
 		width: 640px;
 		height: 640px;
-		display: none;
-		box-shadow: 5px 5px 25px orange;
+		display: block;
+		box-shadow: 5px 5px 25px #ff4400;
 		z-index: 2;
 	}
 	

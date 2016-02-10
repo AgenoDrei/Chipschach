@@ -25,6 +25,7 @@ var assetsObj = {
         }
 }
 
+//var gameCanvas = document.getElementById("cr-stage");
 
 Crafty.scene('Initiate', function() {
 	// Load all files

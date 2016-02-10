@@ -21,6 +21,8 @@
             <div class="cell create">
             <p>Neues Spiel</p>
             </div>
+	    <div class="cell exit">
+	    </div>
             <div class="cell join">
             <p>Spiel beitreten</p>
             </div>
@@ -32,7 +34,7 @@
     </div>
 </div>
 
-<!------------------Overlays-------------------->
+<!------------------Overlays--------------->
 <div class="overlay"></div>
 
 <div id="joinGame">
@@ -52,7 +54,12 @@
                     
         <label style="margin-top: 5px;" for="level">Levelauswahl</label> 
                     <select class="form-control" id="level">
-                        <option value="minischach_debug.js" >Level Debug</option>
+                        <optgroup class="group_rook" label="Turm"></optgroup>
+			<optgroup class="group_bishop" label="Laeufer"></optgroup>
+			<optgroup class="group_queen" label="Dame"></optgroup>
+			<optgroup class="group_king" label="Koenig"></optgroup>
+			<optgroup class="group_knight" label="Springer"></optgroup>
+			<optgroup class="group_pawn" label="Bauer"></optgroup>
                     </select>
                     
         <button class="btn btn-success" id="btn_start">Starte Spiel</button>

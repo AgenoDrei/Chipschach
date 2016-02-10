@@ -34,14 +34,20 @@ var main = function() {
         $('#createGame').show();
         $('.overlay').show();
         
-        $("#level").html("<option value='Wähle Level'>Wähle Level</option>");
+        $("#level").prepend("<option value='Wähle Level'>Wähle Level</option>");
         $.getJSON("/level/category/mp_global", function(data) {
             LEVEL = data;
             console.log('Server> ', data);
             $.each(data, function(k,v) {
-                $("#level").append("<option value='"+v.filename+"'>"+v.name+"</option>");
+		var type = v.filename.split("_")[1];
+		console.log(type, (".group_"+type));
+                $((".group_"+type)).append("<option value='"+v.filename+"'>"+v.name+"</option>");
             });
         });
+    });
+
+    $('.exit').click(function(e) {
+	location.href = "menu";
     });
     
     $('.btn_back').click(function(e) {
